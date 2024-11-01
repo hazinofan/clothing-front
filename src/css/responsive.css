@@ -48,6 +48,10 @@
   .navbar .flex-grow {
     display: none;
   }
+
+  .page-container{
+    display: grid;
+  }
 }
 
 /* Hamburger Icon */
@@ -55,6 +59,8 @@
   border: none;
   background: none;
 }
+
+
 
 
 /* From Uiverse.io by andrew-demchenk0 */ 
@@ -116,4 +122,165 @@
 
 .button:active {
   border: 1px solid #2e8644;
+}
+
+/* Style for Swiper Arrows */
+.custom-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  padding: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 10;
+  transition: background-color 0.3s ease;
+}
+
+.custom-arrow:hover {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+/* Position arrows */
+.swiper-button-prev.custom-arrow {
+  left: 10px;
+}
+
+.swiper-button-next.custom-arrow {
+  right: 10px;
+}
+
+/* Style for Swiper Pagination */
+.swiper-pagination {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 16px;
+  color: white;
+  font-weight: bold;
+}
+
+.swiper-pagination .swiper-pagination-fraction {
+  color: white;
+}
+
+/* Hide default Swiper arrows */
+.swiper-button-next, .swiper-button-prev {
+  display: none !important;
+}
+
+/* Custom arrow styling */
+.custom-prev, .custom-next {
+  position: absolute;
+  transform: translateY(-50%);
+  color: white;
+  font-size: 2rem;
+  padding: 0.5rem;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Added transform to transition */
+  z-index: 10;
+}
+
+.custom-prev:hover, .custom-next:hover {
+  transform: translateY(-50%) scale(1.2); /* Scale up the arrow on hover */
+}
+
+
+.custom-prev {
+  left: 15px;
+}
+
+.custom-next {
+  right: 15px;
+}
+
+.swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+
+  /* Center slide text vertically */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.swiper-pagination-bullet {
+  width: 60px; /* Set a wider width for a rectangular shape */
+  height: 30px; /* Set a smaller height for a rectangular shape */
+  line-height: 30px; /* Center the text vertically */
+  font-size: 16px;
+  color: #fff;
+  opacity: 1;
+  background: #000;
+  border-radius: 0; /* Set border-radius to 0 for sharp corners */
+  margin: 0 5px;
+  margin-top: 10px; /* Keep the top margin for spacing */
+}
+
+
+.swiper-pagination-bullet-active {
+  background: black;
+}
+
+.custom-prev, .custom-next {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  color: #000;
+  cursor: pointer;
+  margin: 0 10px;
+  position: absolute;
+}
+
+/* Position pagination and arrows in the center at the bottom */
+.swiper-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.swiper-pagination-bullet-active {
+  background: #000 !important; /* Black background for active */
+}
+
+.custom-prev {
+  left: 15px; /* Positioned on the left */
+}
+
+.custom-next {
+  right: 15px; /* Positioned on the right */
+}
+
+.swiper-button-next, .swiper-button-prev {
+  display: none !important;
+}
+
+.image-container {
+  overflow: hidden; /* Prevents overflow of the zoomed image */
+  position: relative; /* Needed for absolute positioning of child elements */
+}
+
+.image-fit {
+  transition: transform 0.5s ease; /* Smooth transition for the zoom effect */
+}
+
+.image-container:hover .image-fit {
+  transform: scale(1.1); /* Scale up the image to 110% on hover */
 }

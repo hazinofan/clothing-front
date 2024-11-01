@@ -1,0 +1,17 @@
+.div-container {
+    display: flex;
+    width: 100%;
+    padding: 180px 10px 100px;
+    gap: 18px;
+  }
+
+.divimage-container {
+    position: relative;
+    flex: 1; /* Makes each div take up equal space */
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    overflow: hidden;
+    background-color: #f0f0f0;
+    height: 894px;
+  }

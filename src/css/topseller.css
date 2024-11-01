@@ -1,0 +1,81 @@
+/* Basic reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.product-section {
+  display: flex;
+  gap: 40px;
+  padding: 0px 10px 20px;
+  align-items: flex-start;
+}
+
+.left-section {
+  flex: 1;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
+
+.street-image {
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+}
+
+.product-info {
+  margin-top: 20px;
+  margin-left: 10px;
+}
+
+.product-info h2 {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.product-info p {
+  font-size: 15px;
+  color: #666;
+}
+
+.right-section {
+  display: flex;
+  flex-direction: row;
+  gap: 6px;
+}
+
+.product-image-container {
+  width: 100%;
+  display: grid;
+  justify-content: center;
+}
+
+.product-image {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  object-fit: cover;
+}
+
+
+/* Default styles for larger screens (greater than 1200px) */
+.product-image {
+    width: 500px; /* Adjust width to make it narrower */
+    height: 500px; /* Adjust height to make it taller */
+    object-fit: cover;
+}
+
+/* Styles for screens smaller than 1200px */
+@media (max-width: 1300px) {
+    .product-image {
+        width: 100%; /* Full width */
+        max-width: 300px; /* Maximum width of 300px */
+        height: auto; /* Maintain aspect ratio */
+        width: 255px; /* Specific width of 255px */
+        height: 408px; /* Specific height of 408px */
+        object-fit: cover;
+    }
+}

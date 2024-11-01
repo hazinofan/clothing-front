@@ -150,10 +150,18 @@ export default function Navbar() {
                         </button>
                       </li>
                       }          
+                      <li>
+                        <button
+                          onClick={() => handleNavigation('/dashboard/profile')}
+                          className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                        >
+                          Wishlist
+                        </button>
+                      </li>
                       
                       <li>
                         <button
-                          onClick={() => handleNavigation('/settings')}
+                          onClick={() => handleNavigation('/dashboard/security')}
                           className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                         >
                           Settings

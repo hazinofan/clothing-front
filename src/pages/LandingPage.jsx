@@ -3,6 +3,8 @@ import '../css/LandingPage.css'; // Make sure to create a CSS file for the styli
 import karina from '../assets/karina.jpg'
 import video from '../assets/video.mp4'
 import ProductSwiper from '../pages components/HeroSwipper';
+import Collections from '../pages components/Collections';
+import TopSeller from '../pages components/TopSeller';
 
 const HeroSection = () => {
   return (
@@ -37,6 +39,14 @@ const HeroSection = () => {
         </div>
 
         <ProductSwiper />
+        <Collections />
+
+        <h1 className="text-4xl font-bold text-center text-gray-800 my-6 relative">
+          <span className="relative inline-block">TOP SELLER</span>
+          <span className="absolute inset-0 bg-gradient-to-r from-white to-blue-500 via-blue-300 to-white opacity-30 rounded-lg"></span>
+        </h1>
+
+        <TopSeller />
     </>
   );
 };
