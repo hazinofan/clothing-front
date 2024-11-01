@@ -1,0 +1,58 @@
+.signin {
+    width: 100%; /* Make the button take the full width */
+    display: flex;
+    padding: 0.5rem 1.4rem;
+    font-size: 15px;
+    line-height: 1.25rem;
+    font-weight: 700;
+    text-align: center;
+    font-family: "Montserrat", sans-serif;
+    vertical-align: middle;
+    align-items: center;
+    border-radius: 0.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    gap: 0.75rem;
+    color: #c4d2dc;
+    background-color: #19242b;
+    cursor: pointer;
+    transition: all 0.25s cubic-bezier(0, 0.87, 0.12, 1);
+    place-content: center;
+}
+
+.signin:hover {
+    transform: scale(1.025);
+}
+
+.signin:active {
+    transform: scale(0.975);
+}
+
+button svg {
+    height: 24px;
+    width: auto;
+}
+
+/* For the login button */
+.group/button {
+    width: 100%; /* Ensure the login button spans the full width */
+}
+
+.group/button:hover {
+    transform: scale(1.05); /* Slightly scale on hover */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+}
+
+/* Colder black background */
+.bg-black {
+    background-color: #0a0a0a; /* Darker, colder black */
+}
+
+/* Input fields with yellow border on focus */
+input {
+    transition: all 0.3s ease-in-out; /* Smooth transition for color changes */
+}
+
+input:focus {
+    border-color: yellow; /* Yellow border on focus */
+    box-shadow: 0 0 5px 2px rgba(255, 255, 0, 0.6); /* Yellow glow effect */
+}

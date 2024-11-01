@@ -1,0 +1,119 @@
+.navbar {
+  background-color: white;
+  padding: 0.5rem 2rem;
+}
+
+/* Search bar styles */
+.navbar input[type="text"] {
+  width: 100%;
+  border: 1px solid #ccc;
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+}
+
+/* Navbar links styling */
+.navbar ul li a {
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  transition: color 0.3s;
+}
+
+.navbar ul li a:hover {
+  color: #ff0000;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .navbar .container {
+    flex-direction: column; /* Stack items vertically on small screens */
+  }
+
+  .navbar ul {
+    display: none; /* Hide nav links initially on mobile */
+    flex-direction: column; /* Stack nav links vertically on mobile */
+    width: 100%;
+  }
+
+  .navbar ul.block {
+    display: flex; /* Show nav links when menu is open */
+  }
+
+  .navbar ul li {
+    text-align: center;
+    padding: 1rem 0;
+    border-top: 1px solid #ccc;
+  }
+
+  /* Hide search bar on mobile */
+  .navbar .flex-grow {
+    display: none;
+  }
+}
+
+/* Hamburger Icon */
+.navbar button {
+  border: none;
+  background: none;
+}
+
+
+/* From Uiverse.io by andrew-demchenk0 */ 
+.button {
+  position: relative;
+  width: 168px;
+  height: 40px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  border: 1px solid #34974d;
+  background-color: #3aa856;
+  margin-top: 50px;
+}
+
+.button, .button__icon, .button__text {
+  transition: all 0.3s;
+}
+
+.button .button__text {
+  transform: translateX(30px);
+  color: #fff;
+  font-weight: 600;
+}
+
+.button .button__icon {
+  position: absolute;
+  transform: translateX(109px);
+  height: 100%;
+  width: 39px;
+  left: 20px;
+  background-color: #34974d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button .svg {
+  width: 30px;
+  stroke: #fff;
+}
+
+.button:hover {
+  background: #34974d;
+}
+
+.button:hover .button__text {
+  color: transparent;
+}
+
+.button:hover .button__icon {
+  width: 148px;
+  transform: translateX(0);
+}
+
+.button:active .button__icon {
+  background-color: #2e8644;
+}
+
+.button:active {
+  border: 1px solid #2e8644;
+}

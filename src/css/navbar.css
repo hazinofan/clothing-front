@@ -1,0 +1,120 @@
+/* navbar.css */
+
+.profile-menu-container {
+    position: relative;
+  }
+  
+  .dropdown-menu {
+    position: absolute;
+    right: 0;
+    top: 100%; /* Start from below the profile image */
+    margin-top: 0.5rem; /* Add a little space between the image and dropdown */
+    transform: translateY(-10px);
+    opacity: 0;
+    visibility: hidden;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+  
+  .dropdown-open {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  /* Ensure the navbar is responsive */
+  .navbar-menu {
+    transition: max-height 0.3s ease-in-out;
+    overflow: hidden;
+    max-height: 0;
+  }
+  
+  .navbar-open {
+    max-height: 500px; /* Adjust based on the content */
+  }
+  
+  @media (min-width: 768px) {
+    .navbar-menu {
+      max-height: none;
+      overflow: visible;
+    }
+  }
+
+ /* Button styling */
+.fancy {
+    background-color: transparent;
+    border: 2px solid #000;
+    color: #000;
+    cursor: pointer;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    padding: 5px;
+    position: relative;
+    text-transform: uppercase;
+    transition: all 0.3s ease-in-out;
+    font-size: 13px;
+}
+
+.fancy .text {
+    font-size: 12px;
+    padding: 0px 30px;
+    display: block;
+    transition: all 0.3s ease-in-out;
+    color: black;
+    text-transform: uppercase;
+}
+
+.fancy .top-key {
+    height: 2px;
+    width: 1.5625rem;
+    position: absolute;
+    top: -2px;
+    left: 0.625rem;
+    background: #e8e8e8;
+    transition: width 0.3s ease-out, left 0.3s ease-out;
+}
+
+.fancy .bottom-key-1 {
+    height: 2px;
+    width: 1.5625rem;
+    position: absolute;
+    bottom: -2px;
+    right: 1.875rem;
+    background: #e8e8e8;
+    transition: width 0.3s ease-out, right 0.3s ease-out;
+}
+
+.fancy .bottom-key-2 {
+    height: 2px;
+    width: 0.625rem;
+    position: absolute;
+    bottom: -2px;
+    right: 0.625rem;
+    background: #e8e8e8;
+    transition: width 0.3s ease-out, right 0.3s ease-out;
+}
+
+.fancy:hover {
+    background-color: black;
+    color: white;
+}
+
+.fancy:hover .text {
+    color: white;
+    padding-left: 2.5em; /* Increase padding to move the text to the right */
+    transition: padding-left 0.3s ease-in-out;
+}
+
+.fancy:hover .top-key {
+    left: -2px;
+    width: 0;
+}
+
+.fancy:hover .bottom-key-1,
+.fancy:hover .bottom-key-2 {
+    right: 0;
+    width: 0;
+}
+
+
+
+  
