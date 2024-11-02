@@ -10,6 +10,8 @@ import DashboardPage from './pages/Dashboard';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import AdminSpace from './pages/AdminSpace';
+import TitleAnimation from './animations/TitleAnimation';
+import ProductAnimation from './animations/ProductAnimation';
 
 function App() {
   return (
@@ -18,6 +20,8 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<LandingPage />} />
+          <Route path="/project-title" element={<TitleAnimation />} />
+          <Route path="/project-product" element={<ProductAnimation />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />

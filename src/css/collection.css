@@ -15,3 +15,9 @@
     background-color: #f0f0f0;
     height: 894px;
   }
+
+  @media (max-width: 768px) {
+    .div-container{
+      display: grid;
+    }
+  }

@@ -1,0 +1,76 @@
+
+.container-image {
+    width: 100%;
+    max-width: 100%; /* Ensure it doesn’t exceed the viewport width */
+    text-align: center;
+    box-sizing: border-box; /* Include padding in width calculation */
+    margin-top: 120px;
+}
+
+
+.director-line {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.director-line::before,
+.director-line::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background-color: #333;
+    margin: 0 10px;
+}
+
+.director {
+    font-size: 0.7rem;
+    color: #333;
+    letter-spacing: 1px;
+    font-weight: 400;
+    text-transform: uppercase;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.image-header {
+    font-size: 50px;
+    font-weight: 900; /* Make the font as bold as possible */
+    letter-spacing: 0; /* Remove any spacing between letters */
+    font-family: 'KMR Waldenburg', sans-serif;
+}
+
+.image-header span {
+    font-weight: normal;
+}
+
+.video-container {
+    display: flex;
+    justify-content: center;
+}
+
+.video-element {
+    width: 65%;
+    max-width: 100%; 
+}
+
+.credits {
+    font-size: 0.7rem;
+    color: black;
+    margin-top: 10px;
+    line-height: 1.4;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.mid-header{
+    font-family: 'Times New Roman', Times, serif;
+}
+
+/* imagecomponent.css */
+.container-image.fade-out {
+    animation: fadeOut 0.5s forwards; /* Adjust duration as needed */
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}

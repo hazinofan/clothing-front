@@ -1,0 +1,76 @@
+.animation_title {
+    font-size: 50px;
+    font-weight: 900; /* Make the font as bold as possible */
+    letter-spacing: 0; /* Remove any spacing between letters */
+    font-family: 'KMR Waldenburg', sans-serif;
+    height: 93vh;
+}
+
+.animation_title span {
+    font-weight: normal;
+}
+
+h1.animation_title.h-screen {
+    align-items: center;
+}
+
+h1.animation_title {
+    justify-self: center;
+    align-content: center;
+}
+
+.animation_footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 14px;
+    border-top: solid 1px #4d4d4d;
+}
+/* Main Animation Container */
+.animation_div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: 'KMR Waldenburg', sans-serif;
+    transition: opacity 1s ease; /* Smooth transition for fade-out */
+  }
+  
+  .animation_title {
+    font-size: 50px;
+    font-weight: 900;
+    letter-spacing: 0;
+    color: #333;
+  }
+  
+  .animation_title .mid-header {
+    font-weight: normal;
+  }
+  
+  /* Footer styling remains the same */
+  .animation_footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 14px;
+    border-top: solid 1px #4d4d4d;
+    color: #333;
+    width: 100%;
+    margin-top: 20px;
+  }
+  
+  /* Fade-out effect */
+  .fade-out {
+    opacity: 0;
+  }
+  
+  /* New Content Styling */
+  .new-content {
+    opacity: 0;
+    animation: fadeIn 1s forwards;
+  }
+  
+  @keyframes fadeIn {
+    to {
+      opacity: 1;
+    }
+  }
+  

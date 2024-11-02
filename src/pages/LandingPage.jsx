@@ -5,6 +5,7 @@ import video from '../assets/video.mp4'
 import ProductSwiper from '../pages components/HeroSwipper';
 import Collections from '../pages components/Collections';
 import TopSeller from '../pages components/TopSeller';
+import ImageComponent from '../pages components/ImageComponent';
 
 const HeroSection = () => {
   return (
@@ -47,6 +48,7 @@ const HeroSection = () => {
         </h1>
 
         <TopSeller />
+        <ImageComponent />
     </>
   );
 };

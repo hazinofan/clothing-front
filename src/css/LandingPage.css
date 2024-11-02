@@ -75,6 +75,7 @@
 
 .hero-footer {
   position: absolute;
+  display: flex;
   bottom: 30px;
   text-align-last: center;
   width: 100%;
@@ -214,7 +215,6 @@
 
 h1 {
   position: relative; /* Position relative for the gradient effect */
-  padding: 20px; /* Padding around the text */
   z-index: 1; /* Ensure text is above the gradient */
 }
 
@@ -232,3 +232,4 @@ h1 .bg-gradient {
   border-radius: 8px; /* Rounded corners for the background */
   filter: blur(5px); /* Optional: adds a soft blur effect */
 }
+

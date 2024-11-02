@@ -4,6 +4,20 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Changa:wght@200..800&display=swap');
 
+@font-face {
+  font-family: 'KMR Waldenburg';
+  src: url('./assets/KMR-Waldenburg-FettSchmal.woff2') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'KMR Waldenburg';
+  src: url('./assets/KMR-Waldenburg-SchwerSchmal.woff2') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 * {
     font-family: "Changa", sans-serif;
     font-optical-sizing: auto;
