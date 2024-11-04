@@ -12,12 +12,15 @@ import 'slick-carousel/slick/slick-theme.css';
 import AdminSpace from './pages/AdminSpace';
 import TitleAnimation from './animations/TitleAnimation';
 import ProductAnimation from './animations/ProductAnimation';
+import Footer from './components/Footer';
+import ScrollToTop from './components/ScrollToTop';
 
 function App() {
   return (
     <>
       <Router>
         <Navbar />
+        <ScrollToTop />
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route path="/project-title" element={<TitleAnimation />} />
@@ -29,6 +32,7 @@ function App() {
           <Route path="/dashboard/*" element={<DashboardPage />} /> {/* The wildcard is important for nested routes */}
           <Route path="/admin-profile/*" element={<AdminSpace />} /> {/* The wildcard is important for nested routes */}
         </Routes>
+        <Footer />
       </Router>
     </>
   );

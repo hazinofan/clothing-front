@@ -4,7 +4,7 @@
     max-width: 100%; /* Ensure it doesn’t exceed the viewport width */
     text-align: center;
     box-sizing: border-box; /* Include padding in width calculation */
-    margin-top: 120px;
+    margin: 180px 0;
 }
 
 

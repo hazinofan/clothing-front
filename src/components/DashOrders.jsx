@@ -58,27 +58,27 @@ export default function DashOrders() {
           <div className="flex justify-between mb-4 items-start">
             <div className="font-medium">Order Statistics</div>
           </div>
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-4">
-                        <div class="rounded-md border border-dashed border-gray-200 p-4">
-                            <div class="flex items-center mb-0.5">
-                                <div class="text-xl font-semibold">10</div>
-                                <span class="p-1 rounded text-[12px] font-semibold bg-blue-500/10 text-blue-500 leading-none ml-1">$80</span>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-4">
+                        <div className="rounded-md border border-dashed border-gray-200 p-4">
+                            <div className="flex items-center mb-0.5">
+                                <div className="text-xl font-semibold">10</div>
+                                <span className="p-1 rounded text-[12px] font-semibold bg-blue-500/10 text-blue-500 leading-none ml-1">$80</span>
                             </div>
-                            <span class="text-gray-400 text-sm">Active</span>
+                            <span className="text-gray-400 text-sm">Active</span>
                         </div>
-                        <div class="rounded-md border border-dashed border-gray-200 p-4">
-                            <div class="flex items-center mb-0.5">
-                                <div class="text-xl font-semibold">50</div>
-                                <span class="p-1 rounded text-[12px] font-semibold bg-emerald-500/10 text-emerald-500 leading-none ml-1">+$469</span>
+                        <div className="rounded-md border border-dashed border-gray-200 p-4">
+                            <div className="flex items-center mb-0.5">
+                                <div className="text-xl font-semibold">50</div>
+                                <span className="p-1 rounded text-[12px] font-semibold bg-emerald-500/10 text-emerald-500 leading-none ml-1">+$469</span>
                             </div>
-                            <span class="text-gray-400 text-sm">Completed</span>
+                            <span className="text-gray-400 text-sm">Completed</span>
                         </div>
-                        <div class="rounded-md border border-dashed border-gray-200 p-4">
-                            <div class="flex items-center mb-0.5">
-                                <div class="text-xl font-semibold">4</div>
-                                <span class="p-1 rounded text-[12px] font-semibold bg-rose-500/10 text-rose-500 leading-none ml-1">-$130</span>
+                        <div className="rounded-md border border-dashed border-gray-200 p-4">
+                            <div className="flex items-center mb-0.5">
+                                <div className="text-xl font-semibold">4</div>
+                                <span className="p-1 rounded text-[12px] font-semibold bg-rose-500/10 text-rose-500 leading-none ml-1">-$130</span>
                             </div>
-                            <span class="text-gray-400 text-sm">Canceled</span>
+                            <span className="text-gray-400 text-sm">Canceled</span>
                         </div>
                     </div>
           <div>

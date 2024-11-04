@@ -3,19 +3,37 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 import '../css/titleanimation.css';
 import { useLocation } from 'react-router-dom';
+import detailsRight from '../assets/details.jpg';
+import details1 from '../assets/details2.jpg';
+import details2 from '../assets/details3.jpg';
+import details3 from '../assets/details4.jpg';
+import { FaHeart, FaStar } from 'react-icons/fa6';
 
 export default function TitleAnimation() {
   const [showContent, setShowContent] = useState(true);
   const [fadeOut, setFadeOut] = useState(false);
   const location = useLocation();
-    const StartTitle = location.state?.StartTitle || "Default Title";
-    const midTitle = location.state?.midTitle || "Default Title";
-    const endTitle = location.state?.endTitle || "Default Title";
+  const StartTitle = location.state?.StartTitle || "Default Title";
+  const midTitle = location.state?.midTitle || "Default Mid Title";
+  const endTitle = location.state?.endTitle || "Default End Title";
+
+  const [selectedColor, setSelectedColor] = useState(125);
+
+  const colors = [
+    { id: 125, name: 'Rose Flambé', hex: '#B32D3B' },
+    { id: 126, name: 'Brun Chocolat', hex: '#70413E' },
+    { id: 127, name: 'Violet Sombre', hex: '#8D4A63' },
+    { id: 128, name: 'Nude Classique', hex: '#AE7D6E' },
+    { id: 129, name: 'Rouge Passion', hex: '#BA3A4E' },
+    { id: 130, name: 'Marron Foncé', hex: '#5B3C39' },
+    { id: 131, name: 'Violet Intense', hex: '#943D56' },
+    { id: 132, name: 'Rose Vif', hex: '#B3143E' },
+  ];
 
   useEffect(() => {
-    AOS.init({ duration: 800, easing: 'ease-in-out' }); // Initialize AOS
-    const fadeOutTimer = setTimeout(() => setFadeOut(true), 3000); // 5 seconds to start fade-out
-    const hideContentTimer = setTimeout(() => setShowContent(false), 4000); // 6 seconds to hide content completely
+    AOS.init({ duration: 800, easing: 'ease-in-out' });
+    const fadeOutTimer = setTimeout(() => setFadeOut(true), 3000);
+    const hideContentTimer = setTimeout(() => setShowContent(false), 4000);
 
     return () => {
       clearTimeout(fadeOutTimer);
@@ -24,52 +42,91 @@ export default function TitleAnimation() {
   }, []);
 
   return (
-    <div>
+    <div data-aos="fade-in" className="min-h-screen bg-gray-100 text-gray-800 pt-16"> {/* Added pt-16 for padding at the top */}
       {showContent ? (
         <div data-aos="fade-in" className={`animation_div ${fadeOut ? 'fade-out' : ''}`}>
-          <h1 className='animation_title'>
-                {StartTitle} <span className=' mid-header'> {midTitle} </span> {endTitle}
-            </h1>
-          <div className="animation_footer">
-            <p> JEWELRY & MAKEUP </p>
-            <p> AOS </p>
-            <p> CLOSE </p>
-          </div>
+        <h1 className='animation_title'>
+              {StartTitle} <span className=' mid-header'> {midTitle} </span> {endTitle}
+          </h1>
+        <div className="animation_footer">
+          <p> JEWELRY & MAKEUP </p>
+          <p> AOS </p>
+          <p> CLOSE </p>
         </div>
+      </div>
       ) : (
-        <div data-aos="fade-in" className="new-content max-w-2xl mx-auto mt-24">
-          <div className="flex gap-3 bg-white border border-gray-300 rounded-xl overflow-hidden items-center justify-start">
-            <div className="relative w-32 h-32 flex-shrink-0">
+        <div data-aos="fade-in" className="container mx-auto flex flex-col md:flex-row gap-10 py-16 px-4 md:px-8 items-start">
+          {/* Left Column */}
+          <div className="flex md:flex-row gap-2 w-full md:w-2/3">
+            {/* Main Image */}
+            <div className="relative">
               <img
-                className="absolute left-0 top-0 w-full h-full object-cover object-center"
-                loading="lazy"
-                src="https://via.placeholder.com/150"
-                alt="Placeholder"
+                src={detailsRight}
+                alt="Lipstick Image Ad"
+                className=" shadow-lg w-full h-full object-cover"
               />
             </div>
-            <div className="flex flex-col gap-2 py-2">
-              <p className="text-xl font-bold">{endTitle}</p>
-              <p className="text-gray-500">
-                Description of your post/article, Description of your post/article,
-              </p>
-              <span className="flex items-center justify-start text-gray-500">
-                <svg
-                  className="w-4 h-4 mr-1 mt-1"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M12.586 4.586a2 2 0 112.828 2.828l-3 3a2 2 0 01-2.828 0 1 1 0 00-1.414 1.414 4 4 0 005.656 0l3-3a4 4 0 00-5.656-5.656l-1.5 1.5a1 1 0 101.414 1.414l1.5-1.5zm-5 5a2 2 0 012.828 0 1 1 0 101.414-1.414 4 4 0 00-5.656 0l-3 3a4 4 0 105.656 5.656l1.5-1.5a1 1 0 10-1.414-1.414l-1.5 1.5a2 2 0 11-2.828-2.828l3-3z"
-                    clipRule="evenodd"
-                  ></path>
-                </svg>
-                <a href="https://amitpachange.com" target="_blank" rel="noopener noreferrer">
-                  amitpachange.com
-                </a>
-              </span>
+            {/* Small Images on the Right */}
+            <div className="grid grid-rows-3 gap-4 h-full">
+              <img src={details1} alt="Lipstick product details" className=" shadow-md object-cover h-full" style={{width: '473px'}}/>
+              <img src={details2} alt="Lipstick product details" className=" shadow-md object-cover h-full" style={{width: '473px'}}/>
+              <img src={details3} alt="Lipstick product details" className=" shadow-md object-cover h-full" style={{width: '473px'}}/>
             </div>
+          </div>
+          {/* Right Column for Description */}
+          <div className="w-full md:w-1/3 mt-8 md:mt-0">
+            <p className="text-gray-600 leading-relaxed">
+            <div className="max-w-md mx-auto p-4 border rounded-lg shadow-md">
+          {/* Badge */}
+            <span className="inline-block bg-black text-white px-3 py-1 text-xs font-bold rounded-full mb-2">
+                Nouveauté
+            </span>
+
+            {/* Product Title */}
+            <h2 className="text-sm font-bold uppercase text-gray-700">SEPHORA COLLECTION</h2>
+            <h1 className="text-xl font-bold text-gray-800 mt-1">
+                Cream Lip Stain - Rouge Velouté Sans Transfert - Rouge À Lèvres Liquide Mat
+            </h1>
+
+            {/* Rating and Reviews */}
+            <div className="flex items-center mt-2">
+                <div className="flex space-x-1 text-yellow-500">
+                <FaStar /><FaStar /><FaStar /><FaStar /><FaStar className="text-gray-300" />
+                </div>
+                <a href="#" className="ml-2 text-sm text-gray-600">(214 avis)</a>
+                <FaHeart className="ml-auto text-gray-500 cursor-pointer hover:text-black" />
+            </div>
+
+            {/* Description */}
+            <p className="mt-4 text-gray-600 text-sm">
+                SAME BUT DIFFERENT(1) : le rouge à lèvres liquide iconique CREAM LIP STAIN(2) se réinvente ! ...
+                <a href="#" className="text-gray-700 font-bold ml-1">En savoir plus</a>
+            </p>
+
+            <div className="flex items-center mt-2 p-3 border border-gray-200 rounded-md">
+                <span className="text-gray-700 font-medium">
+                {selectedColor} {colors.find(color => color.id === selectedColor)?.name} (5 ml)
+                </span>
+            </div>
+
+            {/* Color Swatches */}
+            <div className="flex space-x-2 mt-4">
+                {colors.map(color => (
+                <button
+                    key={color.id}
+                    className={`w-8 h-8 rounded-full border-2 ${selectedColor === color.id ? 'border-gray-900' : 'border-transparent'}`}
+                    style={{ backgroundColor: color.hex }}
+                    onClick={() => setSelectedColor(color.id)}
+                />
+                ))}
+            </div>
+
+            {/* Add to Cart Button */}
+            <button className="w-full mt-6 py-3 text-white font-semibold bg-black rounded-lg hover:bg-gray-800">
+                Go to Details Page
+            </button>
+            </div>
+            </p>
           </div>
         </div>
       )}

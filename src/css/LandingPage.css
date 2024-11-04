@@ -3,7 +3,7 @@
 .hero-section {
   position: relative;
   width: 100%;
-  height: 86vh;
+  height: 101vh;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -83,6 +83,8 @@
   color: #ddd;
   letter-spacing: 0.05em;
   line-height: 1.5;
+  justify-content: space-between;
+  padding: 0 50px 0 10px;
 }
 
 .hero-footer p {
@@ -233,3 +235,24 @@ h1 .bg-gradient {
   filter: blur(5px); /* Optional: adds a soft blur effect */
 }
 
+.hero-footer p {
+  align-content: end;
+}
+
+.hero-btn{
+    color: black;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 1rem;
+    padding: 10px 25px;
+    background-color: white;
+    border: 2px solid black;
+    cursor: pointer;
+    position: absolute;
+    bottom: 20px;
+    left: 0; /* Aligns button to the left */
+    margin-left: 10px; /* Optional: Adds some space from the left edge */
+    overflow: hidden;
+    transition: color 0.3s ease;
+    width: 85%;
+}

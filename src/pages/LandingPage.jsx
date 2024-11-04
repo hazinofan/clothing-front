@@ -30,13 +30,13 @@ const HeroSection = () => {
           <div className="hero-title">  
             <h1> Choose Your Style</h1>
           </div>
-          <button className="hero-button">Discover Now</button>
         </div>
 
       </div>
     </div>
     <div className="hero-footer">
           <p>SECOND GENERATION<br />ITAEWON-RO 234 3RD FL YONGSAN-GU | ATALANTA <br />USA04400 IISE.COM</p>
+          <button className="hero-button">Discover Now</button>
         </div>
 
         <ProductSwiper />

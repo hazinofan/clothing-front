@@ -1,0 +1,210 @@
+@import url('https://fonts.googleapis.com/css2?family=Assistant:wght@200..800&family=Changa:wght@200..800&display=swap');
+
+
+/*  this is my css */
+ 
+  .footer_title{
+    font-family: 'KMR Waldenburg', sans-serif;
+    letter-spacing: 1px;
+    font-size: 200px;
+  }
+
+  ul.footer_navbar{
+    justify-items: start;
+  }
+
+  .footer_navbar li{
+    font-family: "Assistant", sans-serif;
+    letter-spacing: 5px;
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+
+  .footer_head{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 80px;
+  }
+
+  .row-navlist{
+    display: flex;
+    flex-direction: row;
+    gap: 35px;
+    font-family: "Assistant", sans-serif;
+    font-size: 20px;
+  }
+
+  .seconddiv_footer{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 28px;
+  }
+
+  .footer-social-icons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+  }
+  
+  .social-icon {
+    color: #fff;
+    font-size: 1.5rem;
+    border: 1px solid #fff;
+    padding: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .footer-container {
+    background-color: #000;
+    color: #fff;
+    padding: 0 20px;
+    text-align: center;
+  }
+
+  .form__group {
+    position: relative;
+    padding: 20px 0 0;
+    width: 100%;
+    max-width: 180px;
+  }
+  
+  .form__field {
+    font-family: inherit;
+    width: 100%;
+    border: none;
+    border-bottom: 2px solid #9b9b9b;
+    outline: 0;
+    font-size: 17px;
+    color: #fff;
+    padding: 7px 0;
+    background: transparent;
+    transition: border-color 0.2s;
+  }
+  
+  .form__field::placeholder {
+    color: transparent;
+  }
+  
+  .form__field:placeholder-shown ~ .form__label {
+    font-size: 17px;
+    cursor: text;
+    top: 20px;
+  }
+  
+  .form__label {
+    position: absolute;
+    top: 0;
+    display: block;
+    transition: 0.2s;
+    font-size: 17px;
+    color: white;
+    pointer-events: none;
+  }
+  
+  .form__field:focus {
+    padding-bottom: 6px;
+    font-weight: 700;
+    border-width: 3px;
+    border-image-slice: 1;
+  }
+  
+  .form__field:focus ~ .form__label {
+    position: absolute;
+    top: 0;
+    display: block;
+    transition: 0.2s;
+    font-size: 17px;
+    color: whitesmoke;
+    font-weight: 700;
+  }
+  
+  /* reset input */
+  .form__field:required, .form__field:invalid {
+    box-shadow: none;
+  }
+
+  /* Responsive styling for footer */
+@media (max-width: 1024px) {
+    .footer_title {
+      font-size: 120px; /* Scale down on smaller screens */
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .footer-container {
+      padding: 20px;
+    }
+  
+    .footer_title {
+      font-size: 80px; /* Reduce font size on tablets */
+    }
+  
+    .footer_head {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+  
+    .footer_navbar {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+      margin-top: 20px;
+    }
+  
+    .seconddiv_footer {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 20px;
+    }
+  
+    .row-navlist {
+      flex-direction: column;
+      gap: 15px;
+    }
+  
+    .footer-social-icons {
+      gap: 10px;
+    }
+  
+    .social-icon {
+      font-size: 1.2rem;
+      padding: 10px;
+    }
+  
+    .form__group {
+      max-width: 100%;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .footer_title {
+      font-size: 60px; /* Further reduce font size on mobile */
+    }
+  
+    .footer_navbar li,
+    .row-navlist li {
+      font-size: 16px;
+    }
+  
+    .social-icon {
+      font-size: 1rem;
+      padding: 8px;
+    }
+  
+    .form__group {
+      padding: 10px 0 0;
+    }
+  
+    .form__field,
+    .form__label {
+      font-size: 14px;
+    }
+  }
+  
