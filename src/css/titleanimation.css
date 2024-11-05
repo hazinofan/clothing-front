@@ -1,9 +1,11 @@
+@import url('https://db.onlinewebfonts.com/c/080242bc52df67d6bf381674170487f9?family=GT+Flexa+Trial+Cm+Md');
+
 .animation_title {
     font-size: 50px;
     font-weight: 900; /* Make the font as bold as possible */
     letter-spacing: 0; /* Remove any spacing between letters */
     font-family: 'KMR Waldenburg', sans-serif;
-    height: 88vh;
+    height: 85vh;
 }
 
 .animation_title span {
@@ -74,3 +76,45 @@ h1.animation_title {
     }
   }
   
+
+.image_header p{
+  max-width: 519px;
+  margin: 0 auto 15px;
+  text-align: center;
+  font-family: "GT Flexa Trial Cm Md";
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 116%;
+  text-transform: uppercase;
+}
+
+@keyframes smoothFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes smoothFadeOut {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+}
+
+.fade-in {
+  animation: smoothFadeIn 1s ease forwards;
+}
+
+.fade-out {
+  animation: smoothFadeOut 1s ease forwards;
+}

@@ -33,11 +33,11 @@ button svg {
 }
 
 /* For the login button */
-.group/button {
+.group_button {
     width: 100%; /* Ensure the login button spans the full width */
 }
 
-.group/button:hover {
+.group_button:hover {
     transform: scale(1.05); /* Slightly scale on hover */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
 }

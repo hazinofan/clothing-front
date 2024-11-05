@@ -42,7 +42,7 @@ export default function TitleAnimation() {
   }, []);
 
   return (
-    <div data-aos="fade-in" className="min-h-screen bg-gray-100 text-gray-800 pt-16"> {/* Added pt-16 for padding at the top */}
+    <div data-aos="fade-in" className="min-h-screen text-gray-800 pt-16"> {/* Added pt-16 for padding at the top */}
       {showContent ? (
         <div data-aos="fade-in" className={`animation_div ${fadeOut ? 'fade-out' : ''}`}>
         <h1 className='animation_title'>
