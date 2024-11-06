@@ -5,8 +5,6 @@ import coll1 from '../assets/coll1.jpeg';
 import coll2 from '../assets/coll2.jpeg';
 import coll3 from '../assets/coll3.jpg';
 import coll4 from '../assets/coll4.jpg';
-import croptop1 from '../assets/croptop1.jpg';
-import croptop2 from '../assets/croptop2.jpg';
 import { useNavigate } from 'react-router-dom';
 
 const TopSeller = () => {
@@ -14,22 +12,14 @@ const TopSeller = () => {
 
   const handleClick = (endTitle) => {
     // Apply fade-out animation by adding a class
-    const handleClick = (endTitle, images, buttonText, links) => {
-      document.querySelector('.container-image').classList.add('fade-out');
+    document.querySelector('.container-image').classList.add('fade-out');
     
-      setTimeout(() => {
-        navigate('/project-product', {
-          state: { 
-            StartTitle: 'MASATO RIESSER', 
-            midTitle: 'for', 
-            endTitle, 
-            images, 
-            buttonText, 
-            links 
-          }
-        });
-      }, 500);
-    }; // Adjust delay to match fade-out duration
+    // Navigate to TitleAnimation component with a delay to allow the animation to finish
+    setTimeout(() => {
+      navigate('/project-product', {
+        state: { StartTitle: 'MASATO RIESSER', midTitle: 'for', endTitle }
+      });
+    }, 500); // Adjust delay to match fade-out duration
   };
 
   return (
@@ -38,11 +28,7 @@ const TopSeller = () => {
       
       <div className="product-section">
         {/* Left Side - Street Image */}
-        <div className="left-section cursor-pointer"  onClick={() => handleClick('T-shirts' , 
-          [croptop1, croptop2],
-          ['Explore Crop-Tops', 'Explore Cheeries T-Shirts', 'Explore New Gen T-shirts'],
-          ['/tshirts', '/hoodies', '/bottoms']
-        )}>
+        <div className="left-section cursor-pointer"  onClick={() => handleClick('T-shirts')}>
           <img src={coll4} alt="Group of people wearing the brand's clothing" className="street-image" />
           <div className="product-info">
             <h2>Feeling T-Shirt</h2>

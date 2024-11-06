@@ -24,8 +24,10 @@ export default function ProductAnimation() {
     };
   }, []);
 
+  
+
   return (
-    <div className="pt-16 pb-32" data-aos="fade-in">
+    <div className="pt-28 pb-32" data-aos="fade-in">
       {showContent ? (
         <div className={`animation_div ${fadeOut ? 'fade-out' : ''}`}>
           <h1 className="animation_title">
