@@ -129,10 +129,12 @@ export default function Navbar() {
           )}
 
           {/* Navbar Content */}
-          <div className="flex items-center justify-between p-4 border-b border-gray-300">
+          <div className="flex items-center justify-between p-4 border-b border-black">
             {/* Logo */}
             <Link to="/" className="flex items-center">
-              <img src={logo} alt="Logo" className="h-8" />
+            <div className=" text-4xl font-bold ml-10 p-0" style={{ fontFamily: "GT Flexa Trial Cm Md", letterSpacing: '2px' }}>
+                AMCB
+            </div>
             </Link>
 
             {/* Icons and Links Section */}

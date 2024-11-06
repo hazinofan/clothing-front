@@ -11,6 +11,7 @@ import AdminSpace from './pages/AdminSpace';
 import TitleAnimation from './animations/TitleAnimation';
 import ProductAnimation from './animations/ProductAnimation';
 import Layout from './components/Layout';
+import Shop from './pages/Shop';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
       <Routes>
         <Route element={<Layout />}>
           <Route path="/" element={<LandingPage />} />
+          <Route path="/shop" element={<Shop />} />
           <Route path="/project-title" element={<TitleAnimation />} />
           <Route path="/project-product" element={<ProductAnimation />} />
           <Route path="/login" element={<Login />} />

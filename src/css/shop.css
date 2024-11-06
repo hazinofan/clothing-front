@@ -1,0 +1,24 @@
+@import url('https://db.onlinewebfonts.com/c/080242bc52df67d6bf381674170487f9?family=GT+Flexa+Trial+Cm+Md');
+
+.shop_navheaders{
+    padding: 15px 0;
+    border-bottom: 1px solid black;
+    font-size: 40px;
+    font-family: 'KMR Waldenburg', sans-serif;
+}
+
+.navs_section{
+    display: flex;
+    flex-direction: row; 
+    gap: 150px;
+    justify-content: center;
+}
+
+.navs_section p{
+    font-family: "GT Flexa Trial Cm Md";
+    letter-spacing: 4px;
+}
+
+.product_description_details{
+    justify-items: flex-start
+}
