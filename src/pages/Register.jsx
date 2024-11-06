@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import favicon from '../assets/favicon.png';
 import '../css/login.css';
 import 'aos/dist/aos.css'; // Import AOS styles
 import AOS from 'aos'; // Import AOS
