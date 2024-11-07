@@ -36,7 +36,7 @@ export default function AdminDashStats() {
         fetchUserData()
       },[])
   return (
-    <div>
+    <div className=' pt-28'>
         <h1 className=' text-3xl text-center mb-10'> Welcome Back Si <span className='text-4xl text-red-600'>{UserData.name }</span> </h1>
         <CardDataStats />
         <UserGrowthChart />

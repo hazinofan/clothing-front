@@ -1,7 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../css/imagecomponent.css';
-import video from '../assets/video2.mp4';
 
 const ImageComponent = () => {
     const navigate = useNavigate();
@@ -28,7 +27,7 @@ const ImageComponent = () => {
             </h1>
             <div className="video-container">
                 <video 
-                    src={video} 
+                    src='/assets/video2.mp4' 
                     alt="Mariacarla Boscono for Valentino Rosso" 
                     autoPlay 
                     loop 

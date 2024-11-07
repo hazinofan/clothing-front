@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import '../css/responsive.css';
-import logo from '../assets/logo.png'
 
 const CouponCard = ({ coupon }) => {
   return (
     <div className="coupon-card">
-      <img src={logo} alt="coupon-logo" className="logo" />
+      <img src='/assets/logo.png' alt="coupon-logo" className="logo" />
       <h3>{coupon.description}</h3>
       <div className="coupon-row">
         <span id="cpnCode">{coupon.code}</span>

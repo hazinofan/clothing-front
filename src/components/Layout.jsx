@@ -7,7 +7,7 @@ import Navbar from './Navbar'
 
 const Layout = () => {
   const location = useLocation();
-  const hideFooterPaths = ['/login', '/register', '/forgot-password', '/dashboard', '/project-product' , 'project-title'];
+  const hideFooterPaths = ['/login', '/register', '/forgot-password', '/dashboard', '/project-product' , 'project-title', '/admin-profile/stats', '/admin-profile/settings', '/admin-profile/products'];
 
   return (
     <>

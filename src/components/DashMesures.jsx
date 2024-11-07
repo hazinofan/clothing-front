@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import mesures from '../assets/mesures.png';
 
 export default function DashMesures() {
   const [openForm, setOpenForm] = useState(false);
@@ -315,7 +314,7 @@ export default function DashMesures() {
           </div>
         </form>
         <div className="flex-grow" style={{textAlign: '-webkit-center'}}>
-          <img src={mesures} alt="" className=' w-48' />
+          <img src='/assets/mesures.png' alt="" className=' w-48' />
         </div>
         <div className=" w-72">
         <ul className="space-y-6">

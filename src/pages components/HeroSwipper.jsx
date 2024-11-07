@@ -1,10 +1,6 @@
 import React, { useEffect } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/swiper-bundle.css';
-import image1 from '../assets/image1.webp';
-import image2 from '../assets/image2.webp';
-import image3 from '../assets/image3.webp';
-import men from '../assets/men.jpg';
 import kids from '../assets/kids.jpg';
 import { LiaLongArrowAltRightSolid } from 'react-icons/lia';
 import '../css/responsive.css';
@@ -44,7 +40,7 @@ const ProductSwiper = () => {
       <SwiperSlide>
         <div className="page-container">
           <div className="image-container">
-            <img src={image1} alt="" className="image-fit" />
+            <img src='/assets/image1.webp' alt="" className="image-fit" />
             <button className="btn">
               <span className="button-text">
               Jewelry Section <span className="long-arrow"><LiaLongArrowAltRightSolid /></span>
@@ -52,7 +48,7 @@ const ProductSwiper = () => {
             </button>
           </div>
           <div className="image-container">
-            <img src={image2} alt="" className="image-fit" />
+            <img src='/assets/image2.webp' alt="" className="image-fit" />
             <button className="btn">
               <span className="button-text">
                 Women's Section <span className="long-arrow"><LiaLongArrowAltRightSolid /></span>
@@ -60,7 +56,7 @@ const ProductSwiper = () => {
             </button>
           </div>
           <div className="image-container">
-            <img src={image3} alt="" className="image-fit" />
+            <img src='/assets/image3.webp' alt="" className="image-fit" />
             <button className="btn">
               <span className="button-text">
                 Special Women <span className=' text-xs text-red-600 md:mr-32'>40% OFF</span> <span className="long-arrow"><LiaLongArrowAltRightSolid /></span>
@@ -74,7 +70,7 @@ const ProductSwiper = () => {
       <SwiperSlide>
         <div className="page-container">
           <div className="image-container">
-            <img src={men} alt="" className="image-fit" />
+            <img src='/assets/men.jpg' alt="" className="image-fit" />
             <button className="btn">
               <span className="button-text">
                 Men's Section <span className="long-arrow"><LiaLongArrowAltRightSolid /></span>
@@ -82,7 +78,7 @@ const ProductSwiper = () => {
             </button>
           </div>
           <div className="image-container">
-            <img src={kids} alt="" className="image-fit" />
+            <img src='/assets/kids.jpg' alt="" className="image-fit" />
             <button className="btn">
               <span className="button-text">
                 Women's Section <span className="long-arrow"><LiaLongArrowAltRightSolid /></span>
@@ -90,7 +86,7 @@ const ProductSwiper = () => {
             </button>
           </div>
           <div className="image-container">
-            <img src={image3} alt="" className="image-fit" />
+            <img src='/assets/image2.webp' alt="" className="image-fit" />
             <button className="btn">
               <span className="button-text">
                 High Sculpt Brief <span className="long-arrow"><LiaLongArrowAltRightSolid /></span>

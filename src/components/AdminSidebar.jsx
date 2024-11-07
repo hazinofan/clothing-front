@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
-import { FaBars, FaTimes, FaUser, FaChartBar, FaCog, FaSignOutAlt, FaProductHunt } from 'react-icons/fa'; // Added new icons
-import admin from '../assets/profile.webp'
+import { FaBars, FaTimes, FaUser, FaChartBar, FaCog, FaSignOutAlt, FaProductHunt } from 'react-icons/fa'; 
 
 const AdminSidebar = () => {
   const [isOpen, setIsOpen] = React.useState(false); // Sidebar toggle for mobile
@@ -18,14 +17,46 @@ const AdminSidebar = () => {
     setOpenDiv(!openDiv)
   }
 
+  const [UserData, setUserData] = useState({})
+    useEffect(() => {
+        const fetchUserData = async () => {
+          const token = localStorage.getItem('token');  
+          if (!token) {
+            console.error('No token found');
+            return;
+          }
+        
+          try {
+            const response = await fetch('http://localhost:5000/api/user/profile', {
+              method: 'GET',
+              headers: {
+                'Authorization': `Bearer ${token}`, // Add the token in the Authorization header
+                'Content-Type': 'application/json'
+              }
+            });
+      
+            if (response.ok) {
+              const data = await response.json(); 
+              setUserData(data)
+            } else {
+              console.error('Failed to fetch user data:', response.status);
+            }
+          } catch (error) {
+            console.error('Error fetching user data:', error);
+          }
+        };
+    
+        fetchUserData()
+      },[])
+
 
   return (
-    <div className="lg:w-64 w-full lg:block bg-gradient-to-b from-purple-600 to-purple-900 shadow-xl h-auto">
+    <div className="lg:w-64 w-full lg:block bg-gradient-to-b from-white to-gray-200 shadow-xl h-auto pt-28">
       {/* Header for mobile view with toggle */}
       <div className="flex justify-between items-center p-6 lg:hidden">
-        <h2 className="text-white text-xl font-semibold">Admin Dashboard</h2>
+        <h2 className="text-black text-xl font-semibold">Admin Dashboard</h2>
         <button onClick={() => setIsOpen(!isOpen)}>
-          <FaBars className="text-white text-2xl" />
+          <FaBars className="text-black text-2xl" />
         </button>
       </div>
 
@@ -37,9 +68,9 @@ const AdminSidebar = () => {
       >
         {/* Close button for mobile */}
         <div className="flex justify-between items-center p-6 lg:hidden">
-          <h2 className="text-white text-xl font-semibold">Admin Dashboard</h2>
+          <h2 className="text-black text-xl font-semibold">Admin Dashboard</h2>
           <button onClick={() => setIsOpen(false)}>
-            <FaTimes className="text-white text-2xl" />
+            <FaTimes className="text-black text-2xl" />
           </button>
         </div>
 
@@ -47,10 +78,10 @@ const AdminSidebar = () => {
         <div className="hidden lg:flex flex-col items-center text-center mt-6">
           <img
             className="rounded-full w-20 h-20 mb-4 border-4 border-white"
-            src={admin} // Placeholder for profile picture
+            src='/assets/profile.webp' // Placeholder for profile picture
             alt="Admin"
           />
-          <h3 className="text-white text-xl font-bold">Admin Name</h3>
+          <h3 className="text-black text-xl font-bold">{UserData.name}</h3>
         </div>
 
         {/* Navigation Links */}
@@ -58,22 +89,9 @@ const AdminSidebar = () => {
           <ul className="space-y-4">
             <li>
               <NavLink
-                to="/admin-profile"
-                className={({ isActive }) =>
-                  `flex items-center gap-3 p-3 text-white rounded-lg transition-all ${
-                    isActive ? 'bg-purple-500' : 'hover:bg-purple-700'
-                  }`
-                }
-              >
-                <FaUser className="text-xl" />
-                <span>My Account</span>
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
                 to="/admin-profile/stats"
                 className={({ isActive }) =>
-                  `flex items-center gap-3 p-3 text-white rounded-lg transition-all ${
+                  `flex items-center gap-3 p-3 text-black rounded-lg transition-all ${
                     isActive ? 'bg-purple-500' : 'hover:bg-purple-700'
                   }`
                 }
@@ -86,7 +104,7 @@ const AdminSidebar = () => {
               <NavLink
                 to="/admin-profile/settings"
                 className={({ isActive }) =>
-                  `flex items-center gap-3 p-3 text-white rounded-lg transition-all ${
+                  `flex items-center gap-3 p-3 text-black rounded-lg transition-all ${
                     isActive ? 'bg-purple-500' : 'hover:bg-purple-700'
                   }`
                 }
@@ -99,7 +117,7 @@ const AdminSidebar = () => {
               <NavLink
                 to="/admin-profile/users"
                 className={({ isActive }) =>
-                  `flex items-center gap-3 p-3 text-white rounded-lg transition-all ${
+                  `flex items-center gap-3 p-3 text-black rounded-lg transition-all ${
                     isActive ? 'bg-purple-500' : 'hover:bg-purple-700'
                   }`
                 }
@@ -112,7 +130,7 @@ const AdminSidebar = () => {
               <NavLink
                 to="/admin-profile/products"
                 className={({ isActive }) =>
-                  `flex items-center gap-3 p-3 text-white rounded-lg transition-all ${
+                  `flex items-center gap-3 p-3 text-black rounded-lg transition-all ${
                     isActive ? 'bg-purple-500' : 'hover:bg-purple-700'
                   }`
                 }
@@ -123,7 +141,7 @@ const AdminSidebar = () => {
             </li>
             <li>
               <NavLink
-                className="flex items-center gap-3 p-3 text-red-400 rounded-lg hover:bg-red-500 hover:text-white transition-all"
+                className="flex items-center gap-3 p-3 text-red-400 rounded-lg hover:bg-red-500 hover:text-black transition-all"
                 onClick={openLogoutPopup}
               >
                 <FaSignOutAlt className="text-xl" />

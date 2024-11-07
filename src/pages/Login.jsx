@@ -1,4 +1,3 @@
-import banner from '../assets/banner.png'
 import React, { useEffect, useState } from 'react'
 import '../css/login.css'
 import 'aos/dist/aos.css'; // Import AOS styles
@@ -124,14 +123,14 @@ export default function Login() {
       {/* Image container */}
       <div className="lg:w-1/2 w-full">
         <img 
-          src={banner} 
+          src='/assets/banner.png' 
           alt="Banner" 
           className="w-full h-auto object-cover" 
         />
       </div>
 
       {/* Form container */}
-      <div className="lg:w-1/2 w-full lg:py-0 flex flex-col items-center justify-center rounded-xl lg:mr-8" style={{ border: "1px solid #D3D3D3"}}>
+      <div className="lg:w-1/2 w-full lg:py-0 flex flex-col items-center justify-center rounded-xl lg:mr-8" >
         <div action="">
           <div className="w-full flex items-center justify-center">
             <div className="max-w-md w-full p-6">

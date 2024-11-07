@@ -112,7 +112,7 @@ export default function Register() {
     <div className="min-h-screen flex flex-col lg:flex-row items-center justify-center" data-aos="fade-up" data-aos-delay="300">
       {/* Image container */}
       <div className="lg:w-1/2 w-full">
-        <img src={registerBanner} alt="Banner" className="w-full h-auto object-cover" />
+        <img src='/assets/register_banner.png' alt="Banner" className="w-full h-auto object-cover" />
       </div>
 
       {/* Form container */}

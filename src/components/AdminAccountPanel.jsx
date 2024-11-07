@@ -207,7 +207,7 @@ const AdminAccountPanel = () => {
   };
 
   return (
-    <div className="container mx-auto p-4">
+    <div className="container mx-auto p-4 pt-28">
       <h1 className="text-2xl font-bold text-center mb-6">MANAGE MY ACCOUNT</h1>
 
       <div className="bg-gray-100 p-4 mb-4">

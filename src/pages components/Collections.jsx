@@ -10,7 +10,7 @@ export default function Collections() {
     <div>
         <div className="div-container">
           <div className="divimage-container">
-            <img src={cat3} alt="" className="image-fit" />
+            <img src='/assets/cat3.webp' alt="" className="image-fit" />
             <button className="btn">
               <span className="button-text text-xl">
               EXPLORE BOTTOMS <span className="long-arrow"><LiaLongArrowAltRightSolid /></span>
@@ -18,7 +18,7 @@ export default function Collections() {
             </button>
           </div>
           <div className="divimage-container">
-            <img src={cat2} alt="" className="image-fit" />
+            <img src='/assets/cat2.webp' alt="" className="image-fit" />
             <button className="btn">
               <span className="button-text text-xl">
                 EXPLORE TOPS <span className="long-arrow"><LiaLongArrowAltRightSolid /></span>
@@ -26,7 +26,7 @@ export default function Collections() {
             </button>
           </div>
           <div className="divimage-container">
-            <img src={cat1} alt="" className="image-fit" />
+            <img src='/assets/cat1.webp' alt="" className="image-fit" />
             <button className="btn">
               <span className="button-text text-xl">
                 MIX + MATCH <span className="long-arrow"><LiaLongArrowAltRightSolid /></span>

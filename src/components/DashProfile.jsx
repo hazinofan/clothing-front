@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import landing from '../assets/landing4.jpg'
 
 export default function DashProfile() {
   const [userData, setUserData] = useState({});
@@ -62,7 +61,7 @@ export default function DashProfile() {
           {wishlist.length > 0 ? (
             wishlist.map((item) => (
               <div key={item.id} className="border rounded-lg shadow-md p-4">
-                <img src={landing} alt={item.name} className="w-full h-48 object-cover mb-4 rounded-md" />
+                <img src='/assets/landing4.jpg' alt={item.name} className="w-full h-48 object-cover mb-4 rounded-md" />
                 <h5 className="text-lg font-semibold mb-2">{item.name}</h5>
                 <p className="text-md text-gray-700 mb-4">{item.price}</p>
                 <button type='submit' className="rounded-md px-3.5 py-2 m-1 overflow-hidden relative group cursor-pointer border-2 font-medium border-indigo-600 text-indigo-600 text-white">

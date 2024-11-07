@@ -32,6 +32,34 @@ const products = [
       colorOptions: 'Black + 6 colors',
       price: '303 DH',
     },
+    {
+      id: 5,
+      image: croptop1, // replace with actual image path
+      name: 'HIGH SCULPT THONG',
+      colorOptions: 'Black + 6 colors',
+      price: '303 DH',
+    },
+    {
+      id: 6,
+      image: croptop1, // replace with actual image path
+      name: 'HIGH SCULPT THONG',
+      colorOptions: 'Black + 6 colors',
+      price: '303 DH',
+    },
+    {
+      id: 7,
+      image: croptop1, // replace with actual image path
+      name: 'HIGH SCULPT THONG',
+      colorOptions: 'Black + 6 colors',
+      price: '303 DH',
+    },
+    {
+      id: 8,
+      image: croptop1, // replace with actual image path
+      name: 'HIGH SCULPT THONG',
+      colorOptions: 'Black + 6 colors',
+      price: '303 DH',
+    },
   ];
 
 export default function Shop() {
