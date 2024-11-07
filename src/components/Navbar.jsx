@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import logo from '../assets/logo.png';
 import { FaBagShopping, FaUser } from 'react-icons/fa6';
 import { FaRegHeart } from 'react-icons/fa';
 

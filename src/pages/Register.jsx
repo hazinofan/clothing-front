@@ -4,7 +4,6 @@ import 'aos/dist/aos.css'; // Import AOS styles
 import AOS from 'aos'; // Import AOS
 import { jwtDecode } from "jwt-decode";
 import { Link, useNavigate } from 'react-router-dom';
-import registerBanner from '../assets/register_banner.png'
 
 export default function Register() {
   const [name, setName] = useState('');

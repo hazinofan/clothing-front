@@ -1,7 +1,4 @@
 import React from 'react'
-import cat1 from '../assets/cat1.webp';
-import cat2 from '../assets/cat2.webp';
-import cat3 from '../assets/cat3.webp';
 import { LiaLongArrowAltRightSolid } from 'react-icons/lia';
 import '../css/collection.css'
 

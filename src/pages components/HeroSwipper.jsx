@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/swiper-bundle.css';
-import kids from '../assets/kids.jpg';
 import { LiaLongArrowAltRightSolid } from 'react-icons/lia';
 import '../css/responsive.css';
 import { Navigation, Pagination } from 'swiper/modules';

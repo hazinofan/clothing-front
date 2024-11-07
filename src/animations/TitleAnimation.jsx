@@ -3,10 +3,6 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 import '../css/titleanimation.css';
 import { useLocation } from 'react-router-dom';
-import detailsRight from '../assets/details.jpg';
-import details1 from '../assets/details2.jpg';
-import details2 from '../assets/details3.jpg';
-import details3 from '../assets/details4.jpg';
 import { FaHeart, FaStar } from 'react-icons/fa6';
 
 export default function TitleAnimation() {
@@ -61,16 +57,16 @@ export default function TitleAnimation() {
             {/* Main Image */}
             <div className="relative">
               <img
-                src={detailsRight}
+                src='/assets/details.jpg'
                 alt="Lipstick Image Ad"
                 className=" shadow-lg w-full h-full object-cover"
               />
             </div>
             {/* Small Images on the Right */}
             <div className="grid grid-rows-3 gap-4 h-full">
-              <img src={details1} alt="Lipstick product details" className=" shadow-md object-cover h-full" style={{width: '473px'}}/>
-              <img src={details2} alt="Lipstick product details" className=" shadow-md object-cover h-full" style={{width: '473px'}}/>
-              <img src={details3} alt="Lipstick product details" className=" shadow-md object-cover h-full" style={{width: '473px'}}/>
+              <img src='/assets/details2.jpg' alt="Lipstick product details" className=" shadow-md object-cover h-full" style={{width: '473px'}}/>
+              <img src='/assets/details3.jpg' alt="Lipstick product details" className=" shadow-md object-cover h-full" style={{width: '473px'}}/>
+              <img src='/assets/details4.jpg' alt="Lipstick product details" className=" shadow-md object-cover h-full" style={{width: '473px'}}/>
             </div>
           </div>
           {/* Right Column for Description */}

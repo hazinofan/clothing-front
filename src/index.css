@@ -3,20 +3,6 @@
 @tailwind utilities;
 
 
-@font-face {
-  font-family: 'KMR Waldenburg';
-  src: url('./assets/KMR-Waldenburg-FettSchmal.woff2') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'KMR Waldenburg';
-  src: url('./assets/KMR-Waldenburg-SchwerSchmal.woff2') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
-
 * {
     font-family: "Changa", sans-serif;
     font-optical-sizing: auto;
