@@ -5,56 +5,56 @@ import { MdOutlineKeyboardArrowDown } from "react-icons/md";
 const products = [
     {
       id: 1,
-      image: '/assets/croptop2', // replace with actual image path
+      image: '/assets/croptop2.jpg', // replace with actual image path
       name: 'LOW HIDE THONG',
       colorOptions: 'Black + 6 colors',
       price: '303 DH',
     },
     {
       id: 2,
-      image: '/assets/croptop2', // replace with actual image path
+      image: '/assets/croptop2.jpg', // replace with actual image path
       name: 'HIGH SCULPT BRIEF',
       colorOptions: 'Black + 6 colors',
       price: '303 DH',
     },
     {
       id: 3,
-      image: '/assets/croptop2', // replace with actual image path
+      image: '/assets/croptop2.jpg', // replace with actual image path
       name: 'LOW HIDE THONG',
       colorOptions: 'White + 6 colors',
       price: '303 DH',
     },
     {
       id: 4,
-      image: '/assets/croptop2', // replace with actual image path
+      image: '/assets/croptop2.jpg', // replace with actual image path
       name: 'HIGH SCULPT THONG',
       colorOptions: 'Black + 6 colors',
       price: '303 DH',
     },
     {
       id: 5,
-      image: '/assets/croptop2', // replace with actual image path
+      image: '/assets/croptop2.jpg', // replace with actual image path
       name: 'HIGH SCULPT THONG',
       colorOptions: 'Black + 6 colors',
       price: '303 DH',
     },
     {
       id: 6,
-      image: '/assets/croptop2', // replace with actual image path
+      image: '/assets/croptop2.jpg', // replace with actual image path
       name: 'HIGH SCULPT THONG',
       colorOptions: 'Black + 6 colors',
       price: '303 DH',
     },
     {
       id: 7,
-      image: '/assets/croptop2', // replace with actual image path
+      image: '/assets/croptop2.jpg', // replace with actual image path
       name: 'HIGH SCULPT THONG',
       colorOptions: 'Black + 6 colors',
       price: '303 DH',
     },
     {
       id: 8,
-      image: '/assets/croptop2', // replace with actual image path
+      image: '/assets/croptop2.jpg', // replace with actual image path
       name: 'HIGH SCULPT THONG',
       colorOptions: 'Black + 6 colors',
       price: '303 DH',
