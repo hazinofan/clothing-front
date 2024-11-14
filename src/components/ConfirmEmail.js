@@ -11,7 +11,7 @@ const ConfirmEmail = () => {
     const confirmEmail = async () => {
       try {
         // Correct the URL to include http:// or https://
-        const response = await axios.post(`http://localhost:5000/api/auth/confirm`, {token}); // Call the API to confirm email
+        const response = await axios.post(`https://1uaneumo6k.execute-api.eu-north-1.amazonaws.com/prod/api/auth/confirm`, {token}); // Call the API to confirm email
         setMessage(response.data.msg); // Set the success message
       } catch (error) {
         setMessage(error.response?.data?.msg || 'An error occurred during email confirmation.'); // Handle error message

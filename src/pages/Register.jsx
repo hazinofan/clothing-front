@@ -74,7 +74,7 @@ export default function Register() {
     }
 
     try {
-      const response = await fetch('https://uhe5su6fv4.execute-api.eu-north-1.amazonaws.com/prod/api/auth/register', {
+      const response = await fetch('https://1uaneumo6k.execute-api.eu-north-1.amazonaws.com/prod/api/auth/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
