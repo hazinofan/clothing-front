@@ -22,7 +22,7 @@ export default function Register() {
     console.log(userObject);
 
     // Send token to backend to create or login the user
-    fetch('http://localhost:5000/api/auth/google', {
+    fetch('https://1uaneumo6k.execute-api.eu-north-1.amazonaws.com/prod/api/auth/google', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -74,7 +74,7 @@ export default function Register() {
     }
 
     try {
-      const response = await fetch('http://localhost:5000/api/auth/register', {
+      const response = await fetch('https://uhe5su6fv4.execute-api.eu-north-1.amazonaws.com/prod/api/auth/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

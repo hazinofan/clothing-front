@@ -20,7 +20,7 @@ export default function Login() {
     console.log(userObject);
 
     // Send token to backend to create or login the user
-    fetch('http://localhost:5000/api/auth/google', {
+    fetch('https://1uaneumo6k.execute-api.eu-north-1.amazonaws.com/prod/api/auth/google', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -68,7 +68,7 @@ export default function Login() {
     e.preventDefault();
   
     try {
-      const response = await fetch('http://localhost:5000/api/auth/login', {
+      const response = await fetch('https://1uaneumo6k.execute-api.eu-north-1.amazonaws.com/prod/api/auth/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
