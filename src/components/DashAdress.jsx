@@ -27,7 +27,7 @@ export default function DashAddress() {
       }
 
       try {
-        const response = await fetch('http://localhost:5000/api/user/address', {
+        const response = await fetch('https://1uaneumo6k.execute-api.eu-north-1.amazonaws.com/prod/api/user/getaddress', {
           headers: {
             'Authorization': `Bearer ${token}`
           }
@@ -70,7 +70,7 @@ export default function DashAddress() {
     }
 
     try {
-      const response = await fetch('http://localhost:5000/api/user/address', {
+      const response = await fetch('https://1uaneumo6k.execute-api.eu-north-1.amazonaws.com/prod/api/user/address', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -83,6 +83,7 @@ export default function DashAddress() {
         alert('Shipping address updated successfully');
         setSubmittedData(formData); // Save the submitted data to display in a card
         setShowForm(false); // Close the popup
+        console.log(formData)
       } else {
         console.error('Error updating shipping address');
       }
@@ -119,7 +120,7 @@ export default function DashAddress() {
 
   return (
     <>
-    <div className="text-center">
+    <div className="text-center pt-32">
       <button
        className="box-border relative z-30 inline-flex items-center justify-center w-auto px-8 py-3 overflow-hidden font-bold text-white transition-all duration-300 bg-indigo-600 rounded-md cursor-pointer group ring-offset-2 ring-1 ring-indigo-300 ring-offset-indigo-200 hover:ring-offset-indigo-500 ease focus:outline-none"
        onClick={() => setShowForm(true)}

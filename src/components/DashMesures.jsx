@@ -24,7 +24,7 @@ export default function DashMesures() {
       }
 
       try {
-        const response = await fetch('http://localhost:5000/api/user/measurement', {
+        const response = await fetch('https://1uaneumo6k.execute-api.eu-north-1.amazonaws.com/prod/api/user/getmeasurements', {
           method: 'GET',
           headers: {
             'Authorization': `Bearer ${token}`
@@ -72,7 +72,7 @@ export default function DashMesures() {
     }
 
     try {
-      const response = await fetch('http://localhost:5000/api/user/measurement', {
+      const response = await fetch('https://1uaneumo6k.execute-api.eu-north-1.amazonaws.com/prod/api/user/measurement', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

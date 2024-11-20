@@ -18,7 +18,7 @@ export default function DashProfile() {
       }
     
       try {
-        const response = await fetch('http://localhost:5000/api/user/profile', {
+        const response = await fetch('https://1uaneumo6k.execute-api.eu-north-1.amazonaws.com/prod/api/user/profile', {
           method: 'GET',
           headers: {
             'Authorization': `Bearer ${token}`, // Add the token in the Authorization header
@@ -28,7 +28,8 @@ export default function DashProfile() {
   
         if (response.ok) {
           const data = await response.json(); 
-          setUserData(data)
+          const parseData = JSON.parse(data.body)
+          setUserData(parseData)
         } else {
           console.error('Failed to fetch user data:', response.status);
         }
@@ -43,16 +44,16 @@ export default function DashProfile() {
 
   return (
     <>
-      <h1 className='text-4xl text-center'> MY PROFILE </h1>
+      <h1 className='text-4xl text-center pt-32'> MY PROFILE </h1>
       <div className="my-10">
         <h4 className='mb-6 text-2xl text-yellow-600'> My informations :</h4>
         <div className="flex gap-3 text-center mb-7">
           <label className='text-xl underline mr-2'> Full Name : </label>
-          <p className='text-xl text-green-700'> {userData.name || 'John Doe'} </p>
+          <p className='text-xl text-green-700'> {userData.name || 'Loading ...'} </p>
         </div>
         <div className="flex gap-3 text-center mb-7">
           <label className='text-xl underline mr-2'> Email : </label>
-          <p className='text-xl text-green-700'> {userData.email || 'johndoe@example.com'} </p>
+          <p className='text-xl text-green-700'> {userData.email || 'Loading ...'} </p>
         </div>
 
         {/* Wishlist Section */}
@@ -75,7 +76,7 @@ export default function DashProfile() {
           )}
         </div>
 
-        <p className='mt-40 text-center'> Want to update your information? Please visit <Link to='/dashboard/security' className='text-red-600'>Manage My Account</Link></p>
+        <p className='mt-10 text-center'> Want to update your information? Please visit <Link to='/dashboard/security' className='text-red-600'>Manage My Account</Link></p>
       </div>
     </>
   );

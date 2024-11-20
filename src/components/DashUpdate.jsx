@@ -52,7 +52,7 @@ const AccountManagement = () => {
       }
 
       try {
-        const response = await fetch('http://localhost:5000/api/user/profile', {
+        const response = await fetch('https://1uaneumo6k.execute-api.eu-north-1.amazonaws.com/prod/api/user/profile', {
           method: 'GET',
           headers: {
             'Authorization': `Bearer ${token}`,
@@ -62,7 +62,9 @@ const AccountManagement = () => {
 
         if (response.ok) {
           const data = await response.json();
-          setUserData(data);
+          const parseData = JSON.parse(data.body)
+          console.log(parseData)
+          setUserData(parseData);
         } else {
           console.error('Failed to fetch user data:', response.status);
         }
@@ -98,7 +100,7 @@ const AccountManagement = () => {
     }
 
     try {
-      const response = await fetch('http://localhost:5000/api/user/update-password', {
+      const response = await fetch('https://1uaneumo6k.execute-api.eu-north-1.amazonaws.com/prod/api/user/update-password', {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${token}`,
@@ -133,7 +135,7 @@ const AccountManagement = () => {
     }
 
     try {
-      const response = await fetch('http://localhost:5000/api/user/deleteprofile', {
+      const response = await fetch('https://1uaneumo6k.execute-api.eu-north-1.amazonaws.com/prod/api/user/deleteprofile', {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${token}`,
@@ -207,7 +209,7 @@ const AccountManagement = () => {
   };
 
   return (
-    <div className="container mx-auto p-4">
+    <div className="container mx-auto pt-36">
       <h1 className="text-2xl font-bold text-center mb-6">MANAGE MY ACCOUNT</h1>
 
       <div className="bg-gray-100 p-4 mb-4">

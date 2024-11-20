@@ -23,7 +23,7 @@ export default function Navbar() {
     }
 
     try {
-      const response = await fetch('http://localhost:5000/api/user/profile', {
+      const response = await fetch('https://1uaneumo6k.execute-api.eu-north-1.amazonaws.com/prod/api/user/profile', {
         method: 'GET',
         headers: {
           Authorization: `Bearer ${token}`,
@@ -33,7 +33,9 @@ export default function Navbar() {
 
       if (response.ok) {
         const data = await response.json();
-        setUserData(data);
+        const parseData = JSON.parse(data.body)
+        console.log(parseData)
+        setUserData(parseData);
       } else {
         console.error('Failed to fetch user data:', response.status);
       }
@@ -171,7 +173,13 @@ export default function Navbar() {
                       <div className="absolute right-0 mt-2 w-48 bg-white border rounded-lg shadow-lg z-50">
                         <div className="px-4 pt-3 pb-0">
                           <span className="block text-sm">{userData.name}</span>
-                          <span className="block text-xs text-gray-500">{userData.email}</span>
+                          <span className="block text-xs text-gray-500">
+                          {userData?.email
+                            ? userData.email.length > 15
+                              ? `${userData.email.slice(0, 20)}...`
+                              : userData.email
+                            : 'Email not available'}
+                          </span>
                           {userData.isAdmin && (
                             <span className="block text-xs text-rose-500">(Admin)</span>
                           )}

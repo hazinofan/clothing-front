@@ -37,7 +37,7 @@ export default function DashCoupons() {
   }, []);
 
   return (
-    <div className="container">
+    <div className="container pt-36">
       <h1 className=' text-5xl mb-8 text-center'> Coupon Codes </h1>
       <p className="text-center text-lg text-gray-600 mb-24">
         Unlock exclusive discounts and offers with our latest coupon codes! Whether you're shopping for the season's hottest trends or looking for deals on essentials, we've got you covered. Use these codes at checkout and save big on your next purchase.

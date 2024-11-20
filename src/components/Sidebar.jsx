@@ -6,7 +6,7 @@ const Sidebar = () => {
   const [isOpen, setIsOpen] = React.useState(false); // Sidebar toggle for mobile
 
   return (
-    <div className="lg:w-64 w-full lg:block bg-white shadow-lg">
+    <div className="lg:w-64 w-full lg:block bg-white shadow-lg pt-36">
       {/* Header for mobile view with toggle */}
       <div className="flex justify-between items-center p-6 lg:hidden border-b">
         <h2 className="text-gray-700 text-xl font-semibold">My Profile</h2>
@@ -36,8 +36,8 @@ const Sidebar = () => {
             <NavLink
               to="/dashboard/profile"
               className={({ isActive }) =>
-                `block p-4 rounded-lg transition-all ${
-                  isActive ? 'bg-gray-200 text-gray-900 font-semibold' : 'text-gray-600 hover:bg-gray-100'
+                `block p-4  transition-all ${
+                  isActive ? 'bg-black/90 text-white font-semibold' : 'text-gray-600 hover:bg-black/55 hover:text-white'
                 }`
               }
             >
@@ -48,8 +48,8 @@ const Sidebar = () => {
             <NavLink
               to="/dashboard/addressbook"
               className={({ isActive }) =>
-                `block p-4 rounded-lg transition-all ${
-                  isActive ? 'bg-gray-200 text-gray-900 font-semibold' : 'text-gray-600 hover:bg-gray-100'
+                `block p-4  transition-all ${
+                  isActive ? 'bg-black/90 text-white font-semibold' : 'text-gray-600 hover:bg-black/55 hover:text-white'
                 }`
               }
             >
@@ -60,8 +60,8 @@ const Sidebar = () => {
             <NavLink
               to="/dashboard/measurements"
               className={({ isActive }) =>
-                `block p-4 rounded-lg transition-all ${
-                  isActive ? 'bg-gray-200 text-gray-900 font-semibold' : 'text-gray-600 hover:bg-gray-100'
+                `block p-4  transition-all ${
+                  isActive ? 'bg-black/90 text-white font-semibold' : 'text-gray-600 hover:bg-black/55 hover:text-white'
                 }`
               }
             >
@@ -72,8 +72,8 @@ const Sidebar = () => {
             <NavLink
               to="/dashboard/security"
               className={({ isActive }) =>
-                `block p-4 rounded-lg transition-all ${
-                  isActive ? 'bg-gray-200 text-gray-900 font-semibold' : 'text-gray-600 hover:bg-gray-100'
+                `block p-4 transition-all ${
+                  isActive ? 'bg-black/90 text-white font-semibold' : 'text-gray-600 hover:bg-black/55 hover:text-white'
                 }`
               }
             >
@@ -85,8 +85,8 @@ const Sidebar = () => {
             <NavLink
               to="/dashboard/coupons"
               className={({ isActive }) =>
-                `block p-4 rounded-lg transition-all ${
-                  isActive ? 'bg-gray-200 text-gray-900 font-semibold' : 'text-gray-600 hover:bg-gray-100'
+                `block p-4  transition-all ${
+                  isActive ? 'bg-black/90 text-white font-semibold' : 'text-gray-600 hover:bg-black/55 hover:text-white'
                 }`
               }
             >
@@ -97,8 +97,8 @@ const Sidebar = () => {
             <NavLink
               to="/dashboard/bonuses"
               className={({ isActive }) =>
-                `block p-4 rounded-lg transition-all ${
-                  isActive ? 'bg-gray-200 text-gray-900 font-semibold' : 'text-gray-600 hover:bg-gray-100'
+                `block p-4  transition-all ${
+                  isActive ? 'bg-black/90 text-white font-semibold' : 'text-gray-600 hover:bg-black/55 hover:text-white'
                 }`
               }
             >
@@ -110,8 +110,8 @@ const Sidebar = () => {
             <NavLink
               to="/dashboard/orders"
               className={({ isActive }) =>
-                `block p-4 rounded-lg transition-all ${
-                  isActive ? 'bg-gray-200 text-gray-900 font-semibold' : 'text-gray-600 hover:bg-gray-100'
+                `block p-4  transition-all ${
+                  isActive ? 'bg-black/90 text-white font-semibold' : 'text-gray-600 hover:bg-black/55 hover:text-white'
                 }`
               }
             >

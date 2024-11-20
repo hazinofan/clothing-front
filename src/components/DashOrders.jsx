@@ -25,7 +25,7 @@ export default function DashOrders() {
     ];
 
   return (
-    <>
+    <div className='pt-28'>
       <div style={{ padding: '20px' }}>
         <h2>Active Orders</h2>
         {activeOrders.length > 0 ? (
@@ -153,6 +153,6 @@ export default function DashOrders() {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }

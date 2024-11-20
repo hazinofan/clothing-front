@@ -4,10 +4,12 @@ import 'aos/dist/aos.css'; // Import AOS styles
 import AOS from 'aos'; // Import AOS
 import { Link, useNavigate } from 'react-router-dom';
 import { jwtDecode } from "jwt-decode";
+import { set } from 'animejs';
 
 export default function Login() {
   const [email, setEmail ] = useState('')
-  const [password, setPassword ] = useState('')
+  const [password, setPassword ] = useState('');
+  const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState('');
   const navigate = useNavigate()
   const clientId = process.env.REACT_APP_GOOGLE_CLIENT_ID;
@@ -66,6 +68,7 @@ export default function Login() {
 
   const handleLogin = async (e) => {
     e.preventDefault();
+    setIsLoading(true)
   
     try {
       const response = await fetch('https://1uaneumo6k.execute-api.eu-north-1.amazonaws.com/prod/api/auth/login', {
@@ -73,10 +76,15 @@ export default function Login() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ email, password }),
+          body: JSON.stringify({ email, password }),
       });
       
-      const data = await response.json();
+      const rawData = await response.json();
+      console.log('Raw Response Data:', rawData);
+      
+      const data = rawData.body && typeof rawData.body === 'string'
+      ? JSON.parse(rawData.body)
+      : rawData;
       
       // Log the entire response and data
       console.log('Response object:', response);
@@ -100,7 +108,11 @@ export default function Login() {
     } catch (err) {
       setError('Something went wrong. Please try again.');
       console.error('Fetch error:', err);
+    } finally {
+      setIsLoading(false)
     }
+
+    console.log(error)
   };
   
   
@@ -198,9 +210,15 @@ export default function Login() {
                   </div>
                   <div>
                     <button
-                      className="group_button relative inline-flex items-center justify-center overflow-hidden rounded-md bg-black backdrop-blur-lg px-6 py-2 text-base font-semibold text-white transition-all duration-300 ease-in-out hover:scale-110 hover:shadow-xl hover:shadow-gray-600/50 border border-white/20 w-full"
+                      className="group_button text-lg relative inline-flex items-center justify-center overflow-hidden rounded-md bg-black backdrop-blur-lg px-6 py-2 font-semibold text-white transition-all duration-300 ease-in-out hover:scale-110 hover:shadow-xl hover:shadow-gray-600/50 border border-white/20 w-full"
+                      type='submit'
+                      disabled={isLoading}
                     >
-                      <span className="text-lg" type='submit'>Login</span>
+                      {isLoading ? (
+                        <div className="spinner-border animate-spin inline-block w-5 h-5 border-4 border-t-transparent border-white rounded-full"></div>
+                      ) : (
+                        'Login'
+                      )}
                       <div
                         className="absolute inset-0 flex h-full w-full justify-center [transform:skew(-13deg)_translateX(-100%)] group-hover/button:duration-1000 group-hover/button:[transform:skew(-13deg)_translateX(100%)]"
                       >

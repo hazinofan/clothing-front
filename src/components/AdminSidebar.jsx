@@ -27,7 +27,7 @@ const AdminSidebar = () => {
           }
         
           try {
-            const response = await fetch('http://localhost:5000/api/user/profile', {
+            const response = await fetch('https://1uaneumo6k.execute-api.eu-north-1.amazonaws.com/prod/api/user/profile', {
               method: 'GET',
               headers: {
                 'Authorization': `Bearer ${token}`, // Add the token in the Authorization header

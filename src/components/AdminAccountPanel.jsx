@@ -52,7 +52,7 @@ const AdminAccountPanel = () => {
       }
 
       try {
-        const response = await fetch('http://localhost:5000/api/user/profile', {
+        const response = await fetch('1uaneumo6k', {
           method: 'GET',
           headers: {
             'Authorization': `Bearer ${token}`,
