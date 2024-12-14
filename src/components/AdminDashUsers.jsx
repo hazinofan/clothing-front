@@ -14,13 +14,16 @@ const AdminDashUsers = () => {
       }
     
       try {
-        const response = await fetch('http://localhost:5000/api/user/db-users', {
+        const response = await fetch('https://1uaneumo6k.execute-api.eu-north-1.amazonaws.com/prod/api/user/getusers', {
           method: 'GET',
         });
   
         if (response.ok) {
           const data = await response.json();
-          setUserData(data);
+          const parsedData = JSON.parse(data.body)
+          console.log(parsedData);
+          
+          setUserData(parsedData);
         } else {
           console.error('Failed to fetch user data:', response.status);
         }
@@ -33,7 +36,7 @@ const AdminDashUsers = () => {
   }, []);
 
   return (
-    <div className="container mx-auto mt-10 px-6 lg:px-8">
+    <div className="container mx-auto mt-10 pt-24 px-6 lg:px-8">
       <h1 className="text-3xl font-bold text-gray-800 mb-8">Users List</h1>
       <div className="shadow-md rounded-lg overflow-hidden">
         <table className="min-w-full bg-white border-separate table-auto border border-gray-200">
@@ -76,7 +79,7 @@ const AdminDashUsers = () => {
             ) : (
               <tr>
                 <td colSpan="5" className="text-center py-6 text-gray-500 text-lg">
-                  No users found
+                  Loading ...
                 </td>
               </tr>
             )}

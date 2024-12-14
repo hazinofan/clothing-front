@@ -232,6 +232,9 @@ export default function Login() {
                   <div className="mt-6 text-center">
                     <p className="text-sm text-gray-500">Don't have an account? <Link to='/register' className="text-yellow-500 hover:text-yellow-600 font-semibold">Register</Link></p>
                   </div>
+                  <div className=" text-center">
+                    <p className="text-sm text-gray-500">Forgot your password? <Link to='/reset-password' className="text-yellow-500 hover:text-yellow-600 font-semibold">Reset Password</Link></p>
+                  </div>
                   </div>
                   </div>
                 </div>

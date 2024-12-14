@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FaBagShopping, FaUser } from 'react-icons/fa6';
 import { FaRegHeart } from 'react-icons/fa';
+import { jwtDecode } from "jwt-decode";
 
 export default function Navbar() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -15,38 +16,137 @@ export default function Navbar() {
 
   const isLandingPage = location.pathname === '/';
 
-  const fetchUserData = async () => {
-    const token = localStorage.getItem('token');
-    if (!token) {
-      console.error('No token found');
-      return;
+  const renderUserMenu = () => {
+    if (!isLoggedIn) {
+      return (
+        <Link to="/login" className={`${linkColor} hover:text-gray-500`}>
+          Login
+        </Link>
+      );
     }
+  
+    if (userData) {
+      return (
+        <div className="relative">
+          <button
+            type="button"
+            className={`${linkColor} hover:text-gray-500 focus:outline-none`}
+            onClick={toggleDropdown}
+          >
+            <FaUser />
+          </button>
+          {dropdownOpen && (
+                      <div className="absolute right-0 mt-2 w-48 bg-white border rounded-lg shadow-lg z-50">
+                        <div className="px-4 pt-3 pb-0">
+                          <span className="block text-sm">{userData.name}</span>
+                          <span className="block text-xs text-gray-500">
+                          {userData?.email
+                            ? userData.email.length > 15
+                              ? `${userData.email.slice(0, 20)}...`
+                              : userData.email
+                            : 'Email not available'}
+                          </span>
+                          {userData.isAdmin && (
+                            <span className="block text-xs text-rose-500">(Admin)</span>
+                          )}
+                        </div>
+                        <ul className="py-2">
+                          {userData.isAdmin && (
+                            <li>
+                              <button
+                                onClick={() => handleNavigation('/admin-profile/stats')}
+                                className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                              >
+                                Admin Space
+                              </button>
+                            </li>
+                          )}
+                          <li>
+                            <button
+                              onClick={() => handleNavigation('/dashboard/profile')}
+                              className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                            >
+                              {userData.isAdmin ? 'Dashboard' : 'Wishlist'}
+                            </button>
+                          </li>
+                          <li>
+                            <button
+                              onClick={() => handleNavigation('/dashboard/security')}
+                              className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                            >
+                              Settings
+                            </button>
+                          </li>
+                          <li>
+                            <button
+                              onClick={signout}
+                              className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                            >
+                              Sign out
+                            </button>
+                          </li>
+                        </ul>
+                      </div>
+                    )}
+                </div>
+      );
+    }
+  
+    return null;
+  };
+  
 
+  const fetchUserData = async () => {
+    const token = localStorage.getItem("token");
+    if (!token) return;
+  
     try {
-      const response = await fetch('https://1uaneumo6k.execute-api.eu-north-1.amazonaws.com/prod/api/user/profile', {
-        method: 'GET',
-        headers: {
-          Authorization: `Bearer ${token}`,
-          'Content-Type': 'application/json',
-        },
-      });
-
-      if (response.ok) {
-        const data = await response.json();
-        const parseData = JSON.parse(data.body)
-        console.log(parseData)
-        setUserData(parseData);
-      } else {
-        console.error('Failed to fetch user data:', response.status);
+      const response = await fetch(
+        "https://1uaneumo6k.execute-api.eu-north-1.amazonaws.com/prod/api/user/profile",
+        {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
+  
+      if (!response.ok) {
+        console.error("Failed to fetch user data:", response.status);
+        return;
       }
+  
+      const data = await response.json();
+      const parsedData = JSON.parse(data.body);
+      setUserData(parsedData);
     } catch (error) {
-      console.error('Error fetching user data:', error);
+      console.error("Error fetching user data:", error);
     }
   };
-
+  
   const checkLoginStatus = () => {
-    const userLoggedIn = localStorage.getItem('token');
-    setIsLoggedIn(!!userLoggedIn);
+    const token = localStorage.getItem("token");
+    if (token) {
+      try {
+        const decodedToken = jwtDecode(token);
+        const currentTime = Math.floor(Date.now() / 1000);
+        if (decodedToken.exp && decodedToken.exp < currentTime) {
+          console.warn("Token has expired");
+          localStorage.removeItem("token");
+          setIsLoggedIn(false);
+          navigate("/login");
+        } else {
+          setIsLoggedIn(true);
+        }
+      } catch (error) {
+        console.error("Invalid token:", error);
+        localStorage.removeItem("token");
+        setIsLoggedIn(false);
+      }
+    } else {
+      setIsLoggedIn(false);
+    }
   };
 
   useEffect(() => {
@@ -159,76 +259,7 @@ export default function Navbar() {
               {/* Icons */}
               <div className="flex items-center space-x-6 text-lg">
                 <FaRegHeart className={`${linkColor} hover:text-gray-500`} />
-
-                {isLoggedIn && userData ? (
-                  <div className="relative">
-                    <button
-                      type="button"
-                      className={`${linkColor} hover:text-gray-500 focus:outline-none`}
-                      onClick={toggleDropdown}
-                    >
-                      <FaUser />
-                    </button>
-                    {dropdownOpen && (
-                      <div className="absolute right-0 mt-2 w-48 bg-white border rounded-lg shadow-lg z-50">
-                        <div className="px-4 pt-3 pb-0">
-                          <span className="block text-sm">{userData.name}</span>
-                          <span className="block text-xs text-gray-500">
-                          {userData?.email
-                            ? userData.email.length > 15
-                              ? `${userData.email.slice(0, 20)}...`
-                              : userData.email
-                            : 'Email not available'}
-                          </span>
-                          {userData.isAdmin && (
-                            <span className="block text-xs text-rose-500">(Admin)</span>
-                          )}
-                        </div>
-                        <ul className="py-2">
-                          {userData.isAdmin && (
-                            <li>
-                              <button
-                                onClick={() => handleNavigation('/admin-profile/stats')}
-                                className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                              >
-                                Admin Space
-                              </button>
-                            </li>
-                          )}
-                          <li>
-                            <button
-                              onClick={() => handleNavigation('/dashboard/profile')}
-                              className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                            >
-                              {userData.isAdmin ? 'Dashboard' : 'Wishlist'}
-                            </button>
-                          </li>
-                          <li>
-                            <button
-                              onClick={() => handleNavigation('/dashboard/security')}
-                              className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                            >
-                              Settings
-                            </button>
-                          </li>
-                          <li>
-                            <button
-                              onClick={signout}
-                              className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                            >
-                              Sign out
-                            </button>
-                          </li>
-                        </ul>
-                      </div>
-                    )}
-                  </div>
-                ) : (
-                  <Link to="/login" className={`${linkColor} hover:text-gray-500`}>
-                    Login
-                  </Link>
-                )}
-
+                {renderUserMenu()}
                 <div className="relative">
                   <FaBagShopping className={`${linkColor} hover:text-gray-500`} />
                   <span className="absolute -top-2 -right-2 bg-red-600 text-white rounded-full text-xs px-1">

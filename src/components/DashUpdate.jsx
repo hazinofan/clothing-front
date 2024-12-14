@@ -28,6 +28,12 @@ const ConfirmationModal = ({ isOpen, onClose, onConfirm }) => {
   );
 };
 
+const Spinner = () => (
+  <div className="flex justify-center items-center">
+    <div className="loader ease-linear rounded-full border-4 border-t-4 border-gray-200 h-6 w-6"></div>
+  </div>
+);
+
 const AccountManagement = () => {
   const [points, setPoints] = useState(100);
   const [userData, setUserData] = useState({ email: '' });
@@ -42,6 +48,8 @@ const AccountManagement = () => {
   const [passwordError, setPasswordError] = useState('');
   const [showPasswordForm, setShowPasswordForm] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isEmailLoading, setIsEmailLoading] = useState(false); // Email loading state
+  const [isPasswordLoading, setIsPasswordLoading] = useState(false); // Password loading state
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -62,9 +70,9 @@ const AccountManagement = () => {
 
         if (response.ok) {
           const data = await response.json();
-          const parseData = JSON.parse(data.body)
-          console.log(parseData)
-          setUserData(parseData);
+          const parsedData = JSON.parse(data.body)
+          console.log(parsedData)
+          setUserData(parsedData);
         } else {
           console.error('Failed to fetch user data:', response.status);
         }
@@ -82,9 +90,12 @@ const AccountManagement = () => {
 
   const handlePasswordUpdate = async (e) => {
     e.preventDefault();
+    setIsPasswordLoading(true);
 
     if (newPassword !== confirmPassword) {
       setPasswordError('New password and confirm password do not match');
+      setTimeout(() => setPasswordError(''), 8000); 
+      setIsPasswordLoading(false);
       return;
     }
 
@@ -96,6 +107,7 @@ const AccountManagement = () => {
     const token = localStorage.getItem('token');
     if (!token) {
       console.error('No token found');
+      setIsPasswordLoading(true);
       return;
     }
 
@@ -118,9 +130,12 @@ const AccountManagement = () => {
       } else {
         const errorData = await response.json();
         setPasswordError(errorData.message || 'Failed to update password');
+        setTimeout(() => setEmailError(''), 3000);
       }
     } catch (error) {
       setPasswordError('An error occurred while updating the password');
+    } finally {
+      setIsPasswordLoading(false);
     }
   };
 
@@ -157,15 +172,17 @@ const AccountManagement = () => {
 
   const handleEmailUpdate = async (e) => {
     e.preventDefault();
+    setIsEmailLoading(true);
     const token = localStorage.getItem('token');
 
     if (!token) {
       console.error('No token found');
+      setIsEmailLoading(false);
       return;
     }
 
     try {
-      const response = await fetch('http://localhost:5000/api/user/update-email', {
+      const response = await fetch('https://1uaneumo6k.execute-api.eu-north-1.amazonaws.com/prod/api/user/update-email', {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${token}`,
@@ -185,6 +202,8 @@ const AccountManagement = () => {
       }
     } catch (error) {
       setEmailError('An error occurred while updating the email');
+    } finally {
+      setIsEmailLoading(false);
     }
   };
 
@@ -209,7 +228,7 @@ const AccountManagement = () => {
   };
 
   return (
-    <div className="container mx-auto pt-36">
+    <div className="container mx-auto p-4 pt-28">
       <h1 className="text-2xl font-bold text-center mb-6">MANAGE MY ACCOUNT</h1>
 
       <div className="bg-gray-100 p-4 mb-4">
@@ -234,8 +253,12 @@ const AccountManagement = () => {
                   className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none"
                   required
                 />
-                <button type="submit" className="bg-gray-200 px-4 py-2 text-sm font-medium">
-                  UPDATE
+                <button
+                  type="submit"
+                  className={`bg-black text-white px-4 py-2 hover:bg-black/85 ${isEmailLoading ? 'cursor-not-allowed' : ''}`}
+                  disabled={isEmailLoading}
+                >
+                  {isEmailLoading ? <Spinner /> : 'UPDATE'}
                 </button>
                 <button type="submit" className="bg-red-500 px-4 py-2 text-sm font-medium" onClick={() => setOpenButton(false)}>
                   CANCEL
@@ -293,9 +316,13 @@ const AccountManagement = () => {
               className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none"
               required
             />
-            <button type="submit" className="bg-gray-200 px-4 py-2 text-sm font-medium">
-              UPDATE PASSWORD
-            </button>
+            <button
+            type="submit"
+            className={`bg-black text-white hover:bg-black/85 px-4 py-2 ${isPasswordLoading ? 'cursor-not-allowed' : ''}`}
+            disabled={isPasswordLoading}
+          >
+            {isPasswordLoading ? <Spinner /> : 'UPDATE PASSWORD'}
+          </button>
             <button type="submit" className="bg-red-500 px-4 py-2 text-sm font-medium ml-5" onClick={() => setShowPasswordForm(false)}>
               CANCEL
             </button>

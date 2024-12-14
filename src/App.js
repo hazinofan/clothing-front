@@ -12,6 +12,9 @@ import TitleAnimation from './animations/TitleAnimation';
 import ProductAnimation from './animations/ProductAnimation';
 import Layout from './components/Layout';
 import Shop from './pages/Shop';
+import ResetPasswordForm from './pages/ResetPassword';
+import AdminSidebar from './components/AdminSidebar';
+import AddProductForm from './components/ProductsTable';
 
 function App() {
   return (
@@ -24,10 +27,11 @@ function App() {
           <Route path="/project-product" element={<ProductAnimation />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/forgot-password" element={<ForgotPassword />} />
+          <Route path="/update-password" element={<ResetPasswordForm />} />
+          <Route path="/reset-password" element={<ForgotPassword />} />
           <Route path="/confirm/:token" element={<ConfirmEmail />} />
-          <Route path="/dashboard/*" element={<DashboardPage />} /> {/* The wildcard is important for nested routes */}
-          <Route path="/admin-profile/*" element={<AdminSpace />} /> {/* The wildcard is important for nested routes */}
+          <Route path="/dashboard/*" element={<DashboardPage />} /> 
+          <Route path="/admin-profile/*" element={<AdminSpace />} /> 
         </Route>
       </Routes>
     </Router>

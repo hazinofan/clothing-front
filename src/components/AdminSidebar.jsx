@@ -141,6 +141,19 @@ const AdminSidebar = () => {
             </li>
             <li>
               <NavLink
+                to="/admin-profile/add-product"
+                className={({ isActive }) =>
+                  `flex items-center gap-3 p-3 text-black rounded-lg transition-all ${
+                    isActive ? 'bg-purple-500' : 'hover:bg-purple-700'
+                  }`
+                }
+              >
+                <FaProductHunt className="text-xl" />
+                <span> Add New Product</span>
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
                 className="flex items-center gap-3 p-3 text-red-400 rounded-lg hover:bg-red-500 hover:text-black transition-all"
                 onClick={openLogoutPopup}
               >

@@ -28,6 +28,12 @@ const ConfirmationModal = ({ isOpen, onClose, onConfirm }) => {
   );
 };
 
+const Spinner = () => (
+  <div className="flex justify-center items-center">
+    <div className="loader ease-linear rounded-full border-4 border-t-4 border-gray-200 h-6 w-6"></div>
+  </div>
+);
+
 const AdminAccountPanel = () => {
   const [points, setPoints] = useState(100);
   const [userData, setUserData] = useState({ email: '' });
@@ -42,6 +48,8 @@ const AdminAccountPanel = () => {
   const [passwordError, setPasswordError] = useState('');
   const [showPasswordForm, setShowPasswordForm] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isEmailLoading, setIsEmailLoading] = useState(false); // Email loading state
+  const [isPasswordLoading, setIsPasswordLoading] = useState(false); // Password loading state
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -52,7 +60,7 @@ const AdminAccountPanel = () => {
       }
 
       try {
-        const response = await fetch('1uaneumo6k', {
+        const response = await fetch('https://1uaneumo6k.execute-api.eu-north-1.amazonaws.com/prod/api/user/profile', {
           method: 'GET',
           headers: {
             'Authorization': `Bearer ${token}`,
@@ -62,7 +70,9 @@ const AdminAccountPanel = () => {
 
         if (response.ok) {
           const data = await response.json();
-          setUserData(data);
+          const parsedData = JSON.parse(data.body)
+          console.log(parsedData)
+          setUserData(parsedData);
         } else {
           console.error('Failed to fetch user data:', response.status);
         }
@@ -80,9 +90,12 @@ const AdminAccountPanel = () => {
 
   const handlePasswordUpdate = async (e) => {
     e.preventDefault();
+    setIsPasswordLoading(true);
 
     if (newPassword !== confirmPassword) {
       setPasswordError('New password and confirm password do not match');
+      setTimeout(() => setPasswordError(''), 8000); 
+      setIsPasswordLoading(false);
       return;
     }
 
@@ -94,11 +107,12 @@ const AdminAccountPanel = () => {
     const token = localStorage.getItem('token');
     if (!token) {
       console.error('No token found');
+      setIsPasswordLoading(true);
       return;
     }
 
     try {
-      const response = await fetch('http://localhost:5000/api/user/update-password', {
+      const response = await fetch('https://1uaneumo6k.execute-api.eu-north-1.amazonaws.com/prod/api/user/update-password', {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${token}`,
@@ -116,9 +130,12 @@ const AdminAccountPanel = () => {
       } else {
         const errorData = await response.json();
         setPasswordError(errorData.message || 'Failed to update password');
+        setTimeout(() => setEmailError(''), 3000);
       }
     } catch (error) {
       setPasswordError('An error occurred while updating the password');
+    } finally {
+      setIsPasswordLoading(false);
     }
   };
 
@@ -133,7 +150,7 @@ const AdminAccountPanel = () => {
     }
 
     try {
-      const response = await fetch('http://localhost:5000/api/user/deleteprofile', {
+      const response = await fetch('https://1uaneumo6k.execute-api.eu-north-1.amazonaws.com/prod/api/user/deleteprofile', {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${token}`,
@@ -155,15 +172,17 @@ const AdminAccountPanel = () => {
 
   const handleEmailUpdate = async (e) => {
     e.preventDefault();
+    setIsEmailLoading(true);
     const token = localStorage.getItem('token');
 
     if (!token) {
       console.error('No token found');
+      setIsEmailLoading(false);
       return;
     }
 
     try {
-      const response = await fetch('http://localhost:5000/api/user/update-email', {
+      const response = await fetch('https://1uaneumo6k.execute-api.eu-north-1.amazonaws.com/prod/api/user/update-email', {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${token}`,
@@ -183,6 +202,8 @@ const AdminAccountPanel = () => {
       }
     } catch (error) {
       setEmailError('An error occurred while updating the email');
+    } finally {
+      setIsEmailLoading(false);
     }
   };
 
@@ -232,8 +253,12 @@ const AdminAccountPanel = () => {
                   className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none"
                   required
                 />
-                <button type="submit" className="bg-gray-200 px-4 py-2 text-sm font-medium">
-                  UPDATE
+                <button
+                  type="submit"
+                  className={`bg-black text-white px-4 py-2 hover:bg-black/85 ${isEmailLoading ? 'cursor-not-allowed' : ''}`}
+                  disabled={isEmailLoading}
+                >
+                  {isEmailLoading ? <Spinner /> : 'UPDATE'}
                 </button>
                 <button type="submit" className="bg-red-500 px-4 py-2 text-sm font-medium" onClick={() => setOpenButton(false)}>
                   CANCEL
@@ -291,9 +316,13 @@ const AdminAccountPanel = () => {
               className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none"
               required
             />
-            <button type="submit" className="bg-gray-200 px-4 py-2 text-sm font-medium">
-              UPDATE PASSWORD
-            </button>
+            <button
+            type="submit"
+            className={`bg-black text-white hover:bg-black/85 px-4 py-2 ${isPasswordLoading ? 'cursor-not-allowed' : ''}`}
+            disabled={isPasswordLoading}
+          >
+            {isPasswordLoading ? <Spinner /> : 'UPDATE PASSWORD'}
+          </button>
             <button type="submit" className="bg-red-500 px-4 py-2 text-sm font-medium ml-5" onClick={() => setShowPasswordForm(false)}>
               CANCEL
             </button>

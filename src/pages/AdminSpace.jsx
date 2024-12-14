@@ -7,6 +7,7 @@ import AdminDashStats from '../components/AdminDashStats';
 import AdminAccountPanel from '../components/AdminAccountPanel';
 import AdminDashUsers from '../components/AdminDashUsers';
 import AddProduct from '../components/AdminDashProducts';
+import AddProductForm from '../components/ProductsTable';
 
 const AdminSpace = () => {
   return (
@@ -18,6 +19,7 @@ const AdminSpace = () => {
           <Route path="settings" element={<AdminAccountPanel />} />
           <Route path="users" element={<AdminDashUsers />} />
           <Route path="products" element={<AddProduct />} />
+          <Route path="add-product" element={<AddProductForm />} />
         </Routes>
       </div>
     </div>
