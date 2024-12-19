@@ -15,6 +15,7 @@ import Shop from './pages/Shop';
 import ResetPasswordForm from './pages/ResetPassword';
 import AdminSidebar from './components/AdminSidebar';
 import AddProductForm from './components/ProductsTable';
+import ProductDetails from './pages/ProductDetails';
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
           <Route path="/project-product" element={<ProductAnimation />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/details" element={<ProductDetails />} />
           <Route path="/update-password" element={<ResetPasswordForm />} />
           <Route path="/reset-password" element={<ForgotPassword />} />
           <Route path="/confirm/:token" element={<ConfirmEmail />} />

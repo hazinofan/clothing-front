@@ -89,9 +89,9 @@ export default function Shop() {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2 p-8">
             {products.map((product) => (
-              <div key={product._id} className="text-center mb-6">
+              <div key={product._id} className="text-center mb-6" onClick={() => console.log(products)}>
                 <img
-                  src={product.images?.[0]?.url || '/placeholder.jpg'} // Handle missing images gracefully
+                  src={product?.images?.[0] || '/placeholder.jpg'} // Handle missing images gracefully
                   alt={product.title}
                   className="w-full h-[600px] object-cover" // Adjust height and object-fit
                 />

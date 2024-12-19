@@ -5,158 +5,162 @@ const AddProductForm = () => {
   const [formData, setFormData] = useState({
     title: '',
     description: '',
+    details: '',
     price: '',
+    priceBefore: '',
     category: '',
-    colors: '',
-    sizes: '',
-    stock: '',
-    brand: '',
+    colors: [],
+    sizes: [],
   });
 
-  const [files, setFiles] = useState([]); // State to store selected files
+  const [images, setImages] = useState([]);
+  const [uploadFileNames, setUploadFileNames] = useState([]);
+  const [errorMessage, setErrorMessage] = useState('');
+  const [successMessage, setSuccessMessage] = useState('');
 
+  const COLORS = ['Red', 'Blue', 'Green', 'Black', 'White', 'Yellow', 'Purple', 'Orange', 'Pink', 'Gray'];
+  const SIZES = ['XS', 'S', 'M', 'L', 'XL', 'XXL', 'XXXL'];
+  const CATEGORIES = ['Men', 'Women', 'Jewelry'];
+
+  // Handle change in text inputs
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
+    setFormData({ ...formData, [name]: value });
   };
 
+  // Handle file upload
   const handleFileChange = (e) => {
-    setFiles([...e.target.files]); // Capture multiple files
+    const files = Array.from(e.target.files);
+    setImages(files);
+    setUploadFileNames(files.map(file => file.name));
   };
 
+  // Handle checkbox change for colors and sizes
+  const handleCheckboxChange = (e, fieldName) => {
+    const { value, checked } = e.target;
+    setFormData(prevState => ({
+      ...prevState,
+      [fieldName]: checked
+        ? [...prevState[fieldName], value] // Add the value if checked
+        : prevState[fieldName].filter(item => item !== value), // Remove if unchecked
+    }));
+  };
+
+  // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setErrorMessage('');
+    setSuccessMessage('');
+
+    if (!formData.title || !formData.description || !formData.price || !formData.colors.length || !formData.category || images.length === 0) {
+      setErrorMessage('Please fill all required fields and upload at least one image.');
+      return;
+    }
 
     try {
-      const formDataToSend = new FormData();
+      const imagesBase64 = await Promise.all(
+        images.map(file =>
+          new Promise((resolve, reject) => {
+            const reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onload = () => resolve(reader.result.split(',')[1]); // Extract base64 data
+            reader.onerror = reject;
+          })
+        )
+      );
 
-      // Append form data
-      Object.entries(formData).forEach(([key, value]) => {
-        formDataToSend.append(key, value);
+      const productData = {
+        ...formData,
+        color: formData.colors.length > 0 ? formData.colors[0] : undefined, // Select the first color
+        price: parseFloat(formData.price),
+        priceBefore: formData.priceBefore ? parseFloat(formData.priceBefore) : undefined,
+        imagesBase64,
+      };
+      
+
+      const response = await axios.post('https://1uaneumo6k.execute-api.eu-north-1.amazonaws.com/prod/api/products/add-products', productData, {
+        headers: { 'Content-Type': 'application/json' },
       });
 
-      // Append files
-      files.forEach((file, index) => {
-        formDataToSend.append(`images`, file); // Backend must handle the "images" key
-      });
-
-      // Send POST request with FormData
-      const response = await axios.post('https://1uaneumo6k.execute-api.eu-north-1.amazonaws.com/prod/api/products/add-products', formDataToSend, {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        },
-      });
-
-      alert('Product added successfully!');
-      console.log('Response:', response.data);
-
-      // Reset form state
-      setFormData({
-        title: '',
-        description: '',
-        price: '',
-        category: '',
-        colors: '',
-        sizes: '',
-        stock: '',
-        brand: '',
-      });
-      setFiles([]);
+      if (response.status === 201) {
+        setSuccessMessage('Product added successfully!');
+        setFormData({
+          title: '',
+          description: '',
+          details: '',
+          price: '',
+          priceBefore: '',
+          category: '',
+          colors: [],
+          sizes: [],
+        });
+        setImages([]);
+        setUploadFileNames([]);
+      }
     } catch (error) {
-      console.error('Error adding product:', error);
-      alert('Failed to add product. Please try again.');
+      setErrorMessage('Failed to add product. Please try again.');
+      console.error('Error:', error);
     }
   };
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      className="max-w-3xl mx-auto p-6 bg-white shadow-md rounded-md space-y-6"
-    >
-      <h2 className="text-2xl font-bold text-center text-gray-700">Add Product</h2>
-      <div>
-        <label className="block text-sm font-medium text-gray-600">Title</label>
-        <input
-          type="text"
-          name="title"
-          value={formData.title}
-          onChange={handleInputChange}
-          className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-          required
-        />
-      </div>
-      <div>
-        <label className="block text-sm font-medium text-gray-600">Description</label>
-        <textarea
-          name="description"
-          value={formData.description}
-          onChange={handleInputChange}
-          className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-          rows="4"
-          required
-        />
-      </div>
-      <div className="grid grid-cols-2 gap-4">
-        <div>
-          <label className="block text-sm font-medium text-gray-600">Price</label>
-          <input
-            type="number"
-            name="price"
-            value={formData.price}
-            onChange={handleInputChange}
-            className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-            required
-          />
+    <div className="pt-24 max-w-lg mx-auto">
+      <h2 className="text-2xl font-bold mb-6">Add a New Product</h2>
+      
+      {errorMessage && <div className="alert alert-error mb-4">{errorMessage}</div>}
+      {successMessage && <div className="alert alert-success mb-4">{successMessage}</div>}
+
+      <form onSubmit={handleSubmit} className="form-control gap-4">
+        <input type="text" name="title" placeholder="Title" className="input input-bordered" value={formData.title} onChange={handleInputChange} required />
+        <textarea name="description" placeholder="Description" className="textarea textarea-bordered" value={formData.description} onChange={handleInputChange} required></textarea>
+        <textarea name="details" placeholder="Details" className="textarea textarea-bordered" value={formData.details} onChange={handleInputChange}></textarea>
+        <input type="number" name="price" placeholder="Price" className="input input-bordered" value={formData.price} onChange={handleInputChange} required />
+        <input type="number" name="priceBefore" placeholder="Price Before (optional)" className="input input-bordered" value={formData.priceBefore} onChange={handleInputChange} />
+
+        <select name="category" className="select select-bordered" value={formData.category} onChange={handleInputChange} required>
+          <option value="">Select a category</option>
+          {CATEGORIES.map(category => <option key={category} value={category}>{category}</option>)}
+        </select>
+
+        <p className='text-xl'>Colors:</p> 
+        <div className='flex gap-2'>
+          {COLORS.map(color => (
+            <label key={color} className="flex items-center gap-2">
+              <input
+                type="checkbox"
+                value={color}
+                checked={formData.colors.includes(color)}
+                onChange={(e) => handleCheckboxChange(e, 'colors')}
+              />
+              {color}
+            </label>
+          ))}
         </div>
-        <div>
-          <label className="block text-sm font-medium text-gray-600">Stock</label>
-          <input
-            type="number"
-            name="stock"
-            value={formData.stock}
-            onChange={handleInputChange}
-            className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-          />
+
+        <p className='text-xl'>Sizes:</p>
+        <div className='flex gap-8'>
+          {SIZES.map(size => (
+            <label key={size} className="flex items-center gap-2">
+              <input
+                type="checkbox"
+                value={size}
+                checked={formData.sizes.includes(size)}
+                onChange={(e) => handleCheckboxChange(e, 'sizes')}
+              />
+              {size}
+            </label>
+          ))}
         </div>
-      </div>
-      <div>
-        <label className="block text-sm font-medium text-gray-600">Category</label>
-        <input
-          type="text"
-          name="category"
-          value={formData.category}
-          onChange={handleInputChange}
-          className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-          required
-        />
-      </div>
-      <div>
-        <label className="block text-sm font-medium text-gray-600">Colors</label>
-        <input
-          type="text"
-          name="colors"
-          value={formData.colors}
-          onChange={handleInputChange}
-          className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-        />
-      </div>
-      <div>
-        <label className="block text-sm font-medium text-gray-600">Upload Images</label>
-        <input
-          type="file"
-          onChange={handleFileChange}
-          className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-          multiple
-          accept="image/*"
-        />
-      </div>
-      <button
-        type="submit"
-        className="w-full px-4 py-2 text-white bg-green-600 rounded-md shadow-sm hover:bg-green-700"
-      >
-        Add Product
-      </button>
-    </form>
+
+        <input type="file" multiple accept="image/*" className="file-input file-input-bordered" onChange={handleFileChange} />
+        
+        <ul className="list-disc pl-5">
+          {uploadFileNames.map((fileName, index) => <li key={index}>{fileName}</li>)}
+        </ul>
+
+        <button type="submit" className="bg-gray-300 border-2 border-black hover:text-white hover:bg-black hover:transition-colors p-3 ">Add Product</button>
+      </form>
+    </div>
   );
 };
 

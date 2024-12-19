@@ -19,7 +19,7 @@ const Footer = () => {
                 <li> CART </li> 
                 <div className="form__group field">
                     <input type="input" className="form__field" placeholder="Name" required="" />
-                    <label for="name" className="form__label">EMAIL</label>
+                    <label htmlFor="name" className="form__label">EMAIL</label>
                 </div>
             </ul>
         </div>

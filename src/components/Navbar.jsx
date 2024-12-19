@@ -242,16 +242,16 @@ export default function Navbar() {
             <div className="flex items-center space-x-8">
               {/* Menu Links */}
               <div className={`flex space-x-8 text-sm font-medium ${linkColor}`}>
-                <Link to="/" className="hover:text-gray-500">
+                <Link to="/" className="hover:text-gray-500 text-xl">
                   HOME
                 </Link>
-                <Link to="/shop" className="hover:text-gray-500">
+                <Link to="/shop" className="hover:text-gray-500 text-xl">
                   SHOP
                 </Link>
-                <Link to="/about" className="hover:text-gray-500">
+                <Link to="/about" className="hover:text-gray-500 text-xl">
                   ABOUT
                 </Link>
-                <button onClick={() => setShowSearch(!showSearch)} className="hover:text-gray-500">
+                <button onClick={() => setShowSearch(!showSearch)} className="hover:text-gray-500 text-xl">
                   SEARCH
                 </button>
               </div>

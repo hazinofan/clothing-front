@@ -1,2 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Arapey:ital@0;1&family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap');
 
+* {
+    font-family: 'KMR Waldenburg', sans-serif; /* Ensure fallback font-family is set */
+    font-weight: 300;
+    font-style: normal;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}

@@ -191,7 +191,7 @@ const AdminDashProducts = () => {
           ) : (
             <tr>
               <td colSpan="7" className="text-center py-6 text-gray-500">
-                Loading bb ...
+                Loading ...
               </td>
             </tr>
           )}

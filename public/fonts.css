@@ -1,14 +1,14 @@
 @font-face {
+  font-family: 'KMR Waldenburg';
+  src: url('/assets/KMR-Waldenburg-SchwerSchmal.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
     font-family: 'KMR Waldenburg';
     src: url('/assets/KMR-Waldenburg-FettSchmal.woff2') format('woff2');
     font-weight: normal;
     font-style: normal;
   }
   
-  @font-face {
-    font-family: 'KMR Waldenburg';
-    src: url('/assets/KMR-Waldenburg-SchwerSchmal.woff2') format('woff2');
-    font-weight: normal;
-    font-style: normal;
-  }
   
